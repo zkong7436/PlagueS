@@ -7,6 +7,11 @@ public class State {
 	private int population;
 	private boolean infected;
 	private boolean destroyed;
+	private int infectedPop;
+	private int deadPop;
+	private int alivePop = population - deadPop;
+	private int notInfectedPop = population - infectedPop;
+	private double percentInfected = (double)(infectedPop/population);
 	
 	private final int POPULATION_US = getPopulation();
 	
@@ -21,6 +26,46 @@ public class State {
 		this.population = population;
 	}
 	
+	public int getInfectedPop() {
+		return infectedPop;
+	}
+
+	public void setInfectedPop(int infectedPop) {
+		this.infectedPop = infectedPop;
+	}
+
+	public int getDeadPop() {
+		return deadPop;
+	}
+
+	public void setDeadPop(int deadPop) {
+		this.deadPop = deadPop;
+	}
+
+	public int getAlivePop() {
+		return alivePop;
+	}
+
+	public void setAlivePop(int alivePop) {
+		this.alivePop = alivePop;
+	}
+
+	public int getNotInfectedPop() {
+		return notInfectedPop;
+	}
+
+	public void setNotInfectedPop(int notInfectedPop) {
+		this.notInfectedPop = notInfectedPop;
+	}
+
+	public double getPercentInfected() {
+		return percentInfected;
+	}
+
+	public void setPercentInfected(double percentInfected) {
+		this.percentInfected = percentInfected;
+	}
+
 	public String getName() {
 		return name;
 	}
