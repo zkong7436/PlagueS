@@ -6,7 +6,16 @@ public class Buttons{
 	public Buttons() {
 		super();
 	}
-	
+	/**
+	 * Will create the buttons that substitutes as the skills
+	 * 
+	 * 
+	 * 
+	 * 
+	 * @param x
+	 * @param y
+	 * @return
+	 */
 	public boolean isHovered(int x, int y){
 		
 		

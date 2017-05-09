@@ -2,7 +2,7 @@ package Ivan;
 
 public class Evolve {
 	public int virusPoints; // get virusPoints from another class
-	public int value;
+	public int cost;
 	public Evolve() {
 		// TODO Auto-generated constructor stub
 	}
@@ -13,6 +13,8 @@ public class Evolve {
 	 * 
 	 */
 	public void select(){
-		
+		if(virusPoints>= cost){
+			
+		}
 	}
 }
