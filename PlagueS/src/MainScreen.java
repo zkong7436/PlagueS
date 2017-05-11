@@ -5,7 +5,7 @@ import GUIpractice.components.Visible;
 import Wendy.Stats;
 
 
-public class MainScreen extends ClickableScreen{
+public class MainScreen extends ClickableScreen implements MainScreenInterface{
 
 	public MainScreen(int width, int height) {
 		super(width, height);
@@ -18,6 +18,10 @@ public class MainScreen extends ClickableScreen{
 		// TODO Auto-generated method stub
 		
 	}
+
+
+	@Override
+	public abstract void initRemainingItems(ArrayList<Visible> viewObjects); 
 
 }
   
