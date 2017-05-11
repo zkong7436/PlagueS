@@ -1,12 +1,9 @@
 /**
  * 
  */
-package Tracey;
 
 import guiPractice.GuiApplication;
-import main.LockScreen;
-import main.Pokedex;
-import main.PokedexScreen;
+
 
 /**
  * @author zkong7436
@@ -35,7 +32,8 @@ public class PlagueS extends GuiApplication {
 	@Override
 	protected void initScreen() {
 		// TODO Auto-generated method stub
-
+		screen = new MainScreen(getWidth(), getHeight());
+		setScreen(screen);
 	}
 
 }
