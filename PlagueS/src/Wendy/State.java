@@ -1,5 +1,4 @@
 package Wendy;
-import Climate;
 
 public class State {
 	

@@ -1,3 +1,4 @@
+package Wendy;
 
 
 public class Climate {

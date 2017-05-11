@@ -1,9 +1,19 @@
+import java.util.ArrayList;
 
-public class MainScreen {
+import guiPractice.components.ClickableScreen;
+import guiPractice.components.Visible;
 
-	public MainScreen() {
+public class MainScreen extends ClickableScreen{
+
+	public MainScreen(int width, int height) {
+		super(width, height);
 		// TODO Auto-generated constructor stub
-		// -\_( )_/-
+	}
+
+	@Override
+	public void initAllObjects(ArrayList<Visible> arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
