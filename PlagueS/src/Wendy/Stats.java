@@ -22,12 +22,13 @@ public class Stats extends Component{
 	public void update(Graphics2D arg0) {
 		// TODO Auto-generated method stub
 		
-		name = new TextLabel(50, 50, 100, 50, null);
+		name = new TextLabel(getWidth()-100, getHeight() - 100, 100, 50, "HI");
+		
 	}
 	
 	public void setState(State s)
 	{
-		
+		state = s;
 	}
 
 	
