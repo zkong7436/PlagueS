@@ -2,16 +2,16 @@ package Wendy;
 
 public class State {
 	
-	private String name;
-	private Climate climate;
-	private int population;
-	private boolean infected;
-	private boolean destroyed;
-	private int infectedPop;
-	private int deadPop;
-	private int alivePop = population - deadPop;
-	private int notInfectedPop = population - infectedPop;
-	private double percentInfected = (double)(infectedPop/population);
+	private static String name;
+	private static Climate climate;
+	private static int population;
+	private static boolean infected;
+	private static boolean destroyed;
+	private static int infectedPop;
+	private static int deadPop;
+	private static int alivePop = population - deadPop;
+	private static int notInfectedPop = population - infectedPop;
+	//private double percentInfected = (double)(infectedPop/population);
 	
 	private final int POPULATION_US = getPopulation();
 	
@@ -58,13 +58,13 @@ public class State {
 		this.notInfectedPop = notInfectedPop;
 	}
 
-	public double getPercentInfected() {
-		return percentInfected;
-	}
-
-	public void setPercentInfected(double percentInfected) {
-		this.percentInfected = percentInfected;
-	}
+//	public double getPercentInfected() {
+//		return percentInfected;
+//	}
+//
+//	public void setPercentInfected(double percentInfected) {
+//		this.percentInfected = percentInfected;
+//	}
 
 	public String getName() {
 		return name;

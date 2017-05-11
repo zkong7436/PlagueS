@@ -1,27 +1,38 @@
 import java.util.ArrayList;
 
 import GUIpractice.ClickableScreen;
+import GUIpractice.components.TextLabel;
 import GUIpractice.components.Visible;
-import Wendy.Stats;
+import Wendy.State;
 
 
-public abstract class MainScreen extends ClickableScreen implements MainScreenInterface{
+public class MainScreen extends ClickableScreen{
+	
+	private State state;
+	private TextLabel name;
+	private TextLabel infected;
+	private TextLabel dead;
 
 	public MainScreen(int width, int height) {
 		super(width, height);
-		// TODO Auto-generated constructor stub
+
 	}
 
 
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		// TODO Auto-generated method stub
-		
+//		state = new State("NY", 500, null);
+//		state.setInfectedPop(10);
+		name = new TextLabel(50,50,1000,50,"State: " + state.getName());
+		infected = new TextLabel(50,150,1000,50,"Infected: " + state.getInfectedPop());
+		dead = new TextLabel(50,200,100,50,"Dead: " + state.getDeadPop());
+		viewObjects.add(name);
+		viewObjects.add(infected);
+		viewObjects.add(dead);
 	}
 
 
-	@Override
-	public abstract void initRemainingItems(ArrayList<Visible> viewObjects); 
 
 }
   

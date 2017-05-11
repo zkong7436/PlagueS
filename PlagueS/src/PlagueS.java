@@ -19,7 +19,8 @@ public class PlagueS extends GUIApplication {
 	}
 
 	public static PlagueS game;
-	public static MainScreen screen;
+	public static IntroScreen Iscreen;
+	public static MainScreen Mscreen;
 	
 	public static void main(String[] args){
 		game = new PlagueS();
@@ -32,7 +33,8 @@ public class PlagueS extends GUIApplication {
 	@Override
 	protected void initScreen() {
 		// TODO Auto-generated method stub
-		screen = new MainScreen(getWidth(), getHeight());
+		Iscreen = new IntroScreen(getWidth(),getHeight())
+		Mscreen = new MainScreen(getWidth(), getHeight());
 		setScreen(screen);
 	}
 
