@@ -2,14 +2,14 @@
  * 
  */
 
-import guiPractice.GuiApplication;
+import GUIpractice.GUIApplication;
 
 
 /**
  * @author zkong7436
  *
  */
-public class PlagueS extends GuiApplication {
+public class PlagueS extends GUIApplication {
 
 	/**
 	 * 

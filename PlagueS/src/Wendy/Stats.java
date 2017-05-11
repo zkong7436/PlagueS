@@ -2,8 +2,8 @@ package Wendy;
 
 import java.awt.Graphics2D;
 
-import guiPractice.components.Component;
-import guiPractice.components.TextLabel;
+import GUIpractice.components.Component;
+import GUIpractice.components.TextLabel;
 
 public class Stats extends Component{
 	
