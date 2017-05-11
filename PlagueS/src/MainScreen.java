@@ -5,7 +5,7 @@ import GUIpractice.components.Visible;
 import Wendy.Stats;
 
 
-public class MainScreen extends ClickableScreen implements MainScreenInterface{
+public abstract class MainScreen extends ClickableScreen implements MainScreenInterface{
 
 	public MainScreen(int width, int height) {
 		super(width, height);
