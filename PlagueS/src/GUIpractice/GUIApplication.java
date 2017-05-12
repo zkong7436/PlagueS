@@ -16,8 +16,8 @@ public abstract class GUIApplication extends JFrame implements Runnable{
 		//setUndecorated(true);
 		int x = 0;
 		int y = 0;
-		int width = 600;
-		int height = 400;
+		int width = 1250;
+		int height = 1000;
 		setBounds(x,y,width,height);
 		initScreen();
 		setVisible(true);
