@@ -6,7 +6,7 @@ public class Cure {
 	
 	private double cure;
 	private double infectedPercentage;
-	private double popDeadPercentage = (double)(State.getDeadPop());
+	private double popDeadPercentage;
 	private int infected;
 	public boolean activate = false;
 	

@@ -22,8 +22,8 @@ public class MainScreen extends ClickableScreen{
 	@Override
 	public void initAllObjects(ArrayList<Visible> viewObjects) {
 		// TODO Auto-generated method stub
-//		state = new State("NY", 500, null);
-//		state.setInfectedPop(10);
+		state = new State("NY", 500, null);
+		state.setInfectedPop(10);
 		name = new TextLabel(50,50,1000,50,"State: " + state.getName());
 		infected = new TextLabel(50,150,1000,50,"Infected: " + state.getInfectedPop());
 		dead = new TextLabel(50,200,100,50,"Dead: " + state.getDeadPop());

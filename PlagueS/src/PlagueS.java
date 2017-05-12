@@ -33,9 +33,9 @@ public class PlagueS extends GUIApplication {
 	@Override
 	protected void initScreen() {
 		// TODO Auto-generated method stub
-		Iscreen = new IntroScreen(getWidth(),getHeight())
+		Iscreen = new IntroScreen(getWidth(),getHeight());
 		Mscreen = new MainScreen(getWidth(), getHeight());
-		setScreen(screen);
+		setScreen(Mscreen);
 	}
 
 }
