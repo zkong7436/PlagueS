@@ -1,12 +1,15 @@
 import java.util.ArrayList;
+import java.util.List;
 
-import GUIpractice.ClickableScreen;
-import GUIpractice.components.TextLabel;
-import GUIpractice.components.Visible;
 import Wendy.State;
+import guiTeacher.components.TextField;
+import guiTeacher.components.TextLabel;
+import guiTeacher.interfaces.Visible;
+import guiTeacher.userInterfaces.ClickableScreen;
+import guiTeacher.userInterfaces.FullFunctionScreen;
 
 
-public class MainScreen extends ClickableScreen{
+public class MainScreen extends FullFunctionScreen{
 	
 	private State state;
 	private TextLabel name;
@@ -20,16 +23,19 @@ public class MainScreen extends ClickableScreen{
 
 
 	@Override
-	public void initAllObjects(ArrayList<Visible> viewObjects) {
+	public void initAllObjects(List<Visible> viewObjects) {
 		// TODO Auto-generated method stub
 		state = new State("NY", 500, null);
 		state.setInfectedPop(10);
-		name = new TextLabel(50,50,1000,50,"State: " + state.getName());
-		infected = new TextLabel(50,150,1000,50,"Infected: " + state.getInfectedPop());
-		dead = new TextLabel(50,200,100,50,"Dead: " + state.getDeadPop());
+		name = new TextLabel(50,100,1000,50,"State: " + state.getName());
+		infected = new TextLabel(50,200,1000,50,"Infected: " + state.getInfectedPop());
+		dead = new TextLabel(50,250,100,50,"Dead: " + state.getDeadPop());
 		viewObjects.add(name);
 		viewObjects.add(infected);
 		viewObjects.add(dead);
+		
+		TextField ex = new TextField(50, 300, 200, 100, "This is a ex");
+		viewObjects.add(ex);
 	}
 
 

@@ -1,8 +1,10 @@
+import guiTeacher.GUIApplication;
+
 /**
  * 
  */
 
-import GUIpractice.GUIApplication;
+
 
 
 /**
@@ -15,6 +17,8 @@ public class PlagueS extends GUIApplication {
 	 * 
 	 */
 	public PlagueS() {
+		super(800,500);
+		setVisible(true);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -31,7 +35,7 @@ public class PlagueS extends GUIApplication {
 	 * @see guiPractice.GuiApplication#initScreen()
 	 */
 	@Override
-	protected void initScreen() {
+	public void initScreen() {
 		// TODO Auto-generated method stub
 		Iscreen = new IntroScreen(getWidth(),getHeight());
 		Mscreen = new MainScreen(getWidth(), getHeight());

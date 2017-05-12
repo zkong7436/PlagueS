@@ -1,11 +1,13 @@
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
-import GUIpractice.ClickableScreen;
-import GUIpractice.components.Visible;
+import guiTeacher.interfaces.Visible;
+import guiTeacher.userInterfaces.ClickableScreen;
 
 public class IntroScreen extends ClickableScreen{
 
-	
+	private String bName;
 
 	public IntroScreen(int width, int height) {
 		super(width, height);
@@ -13,8 +15,10 @@ public class IntroScreen extends ClickableScreen{
 	}
 
 	@Override
-	public void initAllObjects(ArrayList<Visible> viewObjects) {
+	public void initAllObjects(List<Visible> viewObjects) {
 		// TODO Auto-generated method stub
+		
+		Scanner scanner = new Scanner(System.in);
 		
 	}
 
