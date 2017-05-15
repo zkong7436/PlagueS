@@ -17,7 +17,7 @@ public class PlagueS extends GUIApplication {
 	 * 
 	 */
 	public PlagueS() {
-		super(800,500);
+		super(1200,900);
 		setVisible(true);
 		// TODO Auto-generated constructor stub
 	}

@@ -1,7 +1,14 @@
 package Wendy;
 
-public class State {
+import java.awt.Color;
+
+import guiTeacher.components.Action;
+import guiTeacher.components.Button;
+
+public class State extends Button{
 	
+	
+
 	private  String name;
 	private  Climate climate;
 	private  int population;
@@ -15,16 +22,16 @@ public class State {
 	
 	private final int POPULATION_US = getPopulation();
 	
-	private String[] names = {"California","Texas","Florida","New York","Pennsylvania","Illinois","Ohio","Georgia","North Carolina","Michigan","New Jersey","Virginia","Washington","Arizona","Massachusetts","Tennessee","Indiana","Missouri","Maryland","Wisconsin","Colorado","Minnesota","South Carolina","Alabama","Louisiana","Kentucky","Oregon","Oklahoma","Connecticut","Puerto Rico","Iowa","Utah","Mississippi","Arkansas","Nevada","Kansas","New Mexico","Nebraska","West Virginia","Idaho","Hawaii","New Hampshire","Maine","Rhode Island","Montana","Delaware","South Dakota","North Dakota","Alaska","Wyoming","Vermont"};
-	//location of the state name of images
 	
-
-	public State(String name, int population, Climate climate) {
+	public State(int x, int y, int w, int h, String text, Action action, String name, int population, Climate climate) {
+		super(x, y, w, h, text,Color.blue, action);
 		// TODO Auto-generated constructor stub
 		this.name = name;
 		this.climate = climate;
 		this.population = population;
+		update();
 	}
+	
 	
 	public int getInfectedPop() {
 		return infectedPop;

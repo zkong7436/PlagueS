@@ -39,7 +39,7 @@ public class TextLabel extends StyledComponent implements TextComponent{
 			super(x, y, w, h);
 			this.text = text;
 			font = getBaseFont();
-			size = 20;
+			size = 18;
 			textColor = super.getTextColor();
 			align = super.getBodyAlign();
 			update();
