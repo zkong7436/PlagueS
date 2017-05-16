@@ -6,12 +6,12 @@ package Tracey;
 /**
  * @author Student8
  */
-public class Transmissions {
+public class Upgrades {
 
 	/**
 	 * 
 	 */
-	public Transmissions() {
+	public Upgrades() {
 		// TODO Auto-generated constructor stub
 	} 
 
