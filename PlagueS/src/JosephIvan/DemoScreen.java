@@ -5,7 +5,7 @@ import java.util.List;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
-public class DemoScreen extends FullFunctionScreen{
+public class DemoScreen extends FullFunctionScreen implements Runnable {
 
 
 
@@ -19,5 +19,13 @@ public class DemoScreen extends FullFunctionScreen{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 }
