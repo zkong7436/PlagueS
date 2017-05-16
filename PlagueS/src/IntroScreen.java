@@ -1,11 +1,11 @@
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
-import Wendy.TitleLabel;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.TextField;
+import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.ClickableScreen;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -13,6 +13,15 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class IntroScreen extends FullFunctionScreen{
 
 	private String bName;
+
+
+	public String getbName() {
+		return bName;
+	}
+
+	public void setbName(String bName) {
+		this.bName = bName;
+	}
 
 	public IntroScreen(int width, int height) {
 		super(width, height);
@@ -23,28 +32,45 @@ public class IntroScreen extends FullFunctionScreen{
 	public void initAllObjects(List<Visible> viewObjects) {
 		// TODO Auto-generated method stub
 		
-		TitleLabel title = new TitleLabel(100,50,500,100);
+		TextLabel title = new TextLabel(getHeight()/2 - 100, getWidth()/10, 1000, 100, "PLAGUE S-implified");
+		title.setSize(50);
 		
-		viewObjects.add(title);
 		
+		TextField input = new TextField(getHeight()/3,getWidth()/3,500,100,"Enter a name");
 		
-		TextField input = new TextField(getHeight()/2,getWidth()/2,200,200,"Enter text");
+		Button enter = new Button(getHeight()/3 + 550, getWidth()/3 + 50, 100, 50, "Enter", null);
 		
-		viewObjects.add(input);
-		
-		Button enter = new Button(110, 100, 25, 30, "Enter", new Action(){
+		enter.setAction(new Action(){
 
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
+				System.out.println(input.getText());
 				bName = input.getText();
+				remove(input);
+				remove(enter);
+				Button welcome = new Button(getHeight()/3,getWidth()/3,500,100, "Welcome to Plague S", null);
+				welcome.setSize(30);
+				viewObjects.add(welcome);
+				welcome.setAction(new Action(){
+
+					@Override
+					public void act() {
+						// TODO Auto-generated method stub
+						
+					}
+					
+				});
 			}
 			
 		});
 		
+		viewObjects.add(title);
+		viewObjects.add(input);
 		viewObjects.add(enter);
 		
 		
+	
 		
 	}
 
