@@ -66,7 +66,7 @@ public class IntroScreen extends FullFunctionScreen{
 		});
 		
 		viewObjects.add(title);
-		viewObjects.add(input);
+		viewObjects.add(input); 
 		viewObjects.add(enter);
 		
 		
