@@ -32,9 +32,9 @@ public class MainScreen extends FullFunctionScreen{
 	public void initAllObjects(List<Visible> viewObjects) {
 		// TODO Auto-generated method stub
 		
-		Graphic backGround = new Graphic(10, 10, 1.1, "Images/map0.1.jpg");
+		//Graphic backGround = new Graphic(10, 10, 1.1, "Images/map0.1.jpg");
 		
-		viewObjects.add(backGround);
+		//viewObjects.add(backGround);
 		
 		fillInButtons();
 		viewObjects.addAll(butts);
@@ -44,9 +44,9 @@ public class MainScreen extends FullFunctionScreen{
 		//name = new TextLabel(50,100,1000,50,"State: " + state.getName());
 		//infected = new TextLabel(50,200,1000,50,"Infected: " + state.getInfectedPop());
 		//dead = new TextLabel(50,250,100,50,"Dead: " + state.getDeadPop());
-		viewObjects.add(name);
-		viewObjects.add(infected);
-		viewObjects.add(dead);
+		//viewObjects.add(name);
+		//viewObjects.add(infected);
+		//viewObjects.add(dead);
 		
 	}
 	
@@ -64,13 +64,11 @@ public class MainScreen extends FullFunctionScreen{
 					@Override
 					public void act() {
 						// TODO Auto-generated method stub
-						name = new TextLabel(50,100,1000,50,"State: " + but.getName());
-						infected = new TextLabel(50,200,1000,50,"Infected: " + but.getInfectedPop());
-						dead = new TextLabel(50,250,100,50,"Dead: " + but.getDeadPop());
+
 						
 					}
 					
-				},n[i], col, null);
+				},"NY", col, null);
 				but.setForeground(Color.red);
 				butts.add(but);
 				i++;

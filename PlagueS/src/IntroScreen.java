@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import Wendy.TitleLabel;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.TextField;
@@ -22,11 +23,16 @@ public class IntroScreen extends FullFunctionScreen{
 	public void initAllObjects(List<Visible> viewObjects) {
 		// TODO Auto-generated method stub
 		
-		TextField input = new TextField(getHeight()/2,getWidth()/2,150,200,"Enter text");
+		TitleLabel title = new TitleLabel(100,50,500,100);
+		
+		viewObjects.add(title);
+		
+		
+		TextField input = new TextField(getHeight()/2,getWidth()/2,200,200,"Enter text");
 		
 		viewObjects.add(input);
 		
-		Button enter = new Button(110, 100, 50, 30, "Enter", new Action(){
+		Button enter = new Button(110, 100, 25, 30, "Enter", new Action(){
 
 			@Override
 			public void act() {
