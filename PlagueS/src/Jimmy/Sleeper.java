@@ -10,8 +10,8 @@ public class Sleeper implements Runnable {
 		private int month;
 		private boolean gameOn = true;
 		private boolean cureStarted = false;
-		private String[] months = {"January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-		private int[] daysPerMonth = {5,5,5,31,31,31,31,31,31,31,3,31};
+		private String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+		private int[] daysPerMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
 		private int year = 2017;
 		private int dayYear;
 		private Cure cure;
@@ -25,7 +25,7 @@ public class Sleeper implements Runnable {
 
 		public Sleeper(int number) {
 			this.number = number;
-			this.second = (int) (2000);
+			this.second = (int) (100);
 			this.cure = new Cure();
 			
 		}
@@ -42,10 +42,10 @@ public class Sleeper implements Runnable {
 						}
 						if(dayYear > 365){
 							dayYear = 1;
-							month = 1;
+							month = 0;
 							year++;
 						}
-					System.out.println("Day " +days + " Month " + months[month] + " Year " + year);
+					System.out.println("Day " + days + " Month " + months[month] + " Year " + year);
 						cure.isDetected();
 					}
 				

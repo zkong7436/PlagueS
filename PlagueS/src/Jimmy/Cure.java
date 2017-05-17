@@ -38,6 +38,7 @@ public class Cure {
 	}
 	
 	public void makingCure(){
+		int rate;
 		
 	}
 	
