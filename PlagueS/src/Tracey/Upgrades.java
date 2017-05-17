@@ -1,6 +1,7 @@
 package Tracey;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,14 +28,15 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 	public void initAllObjects(List<Visible> viewObjects) {
 		background = new Graphic(0,80, 0.65,"Images/back.jpg");
 		
-		tran = new Button(0, 80, 200, 50, "Transmissions", Color.white, new Action(){
+		tran = new Button(0, 80, 200, 60, "Transmissions", Color.red, new Action(){
 
 			@Override
 			public void act() {
-			
+//				PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
 			}
 			
 		});
+		tran.setSize(20);
 		viewObjects.add(background);
 		viewObjects.add(tran);
 	}
