@@ -7,10 +7,11 @@ public class Sleeper implements Runnable {
 		private int number;
 		private int second;
 		private int days;
+		private int month;
 		private boolean gameOn = true;
 		private boolean cureStarted = false;
 		private String[] months = {"January", "Febuary", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
-		private int[] daysPerMonth = {31,28,31,31,31,31,31,31,31,31,3,31};
+		private int[] daysPerMonth = {5,5,5,31,31,31,31,31,31,31,3,31};
 		private int year = 2017;
 		private int dayYear;
 		private Cure cure;
@@ -35,23 +36,18 @@ public class Sleeper implements Runnable {
 					Thread.sleep(second);
 					days++;
 					dayYear++;
-					for(int i = 0; i > months.length; i++){
-						for(int j = 0; j > 31; j++){
-						if(daysPerMonth[j] > days){
+						if(daysPerMonth[month] < days){
 							days = 1;
-							i--;
+							month++;
 						}
 						if(dayYear > 365){
 							dayYear = 1;
 							year++;
 						}
-						System.out.println("Day " +days + "Month" + months[i] + "Year" + year);
+					System.out.println("Day " +days + " Month " + months[month] + " Year " + year);
 						cure.isDetected();
 					}
-				}
-			}
 				
-	
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
