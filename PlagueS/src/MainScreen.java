@@ -3,6 +3,7 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import Wendy.State;
 import guiTeacher.components.Action;
@@ -39,6 +40,23 @@ public class MainScreen extends FullFunctionScreen{
 		viewObjects.addAll(butts);
 		//width = 55 height = 110
 		
+		Button welcome = new Button(getWidth()/6, getHeight()/3,900,100,"Welcome to PlagueS! \n You are a new Bacteria. To win, you must evolve and spread across the country - wiping out all humans in the Plague",Color.red,null);
+		welcome.setAction(new Action(){
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				try {
+					TimeUnit.SECONDS.sleep(10);
+					remove(welcome);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+		
+		});
 		
 		addStatsBar(state);
 		
@@ -56,6 +74,7 @@ public class MainScreen extends FullFunctionScreen{
 			}
 		});
 		
+		viewObjects.add(welcome);
 		viewObjects.add(name);
 		viewObjects.add(population);
 		viewObjects.add(infected);
