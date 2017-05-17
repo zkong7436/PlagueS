@@ -16,16 +16,16 @@ public class Sleeper implements Runnable {
 		private int dayYear;
 		private Cure cure;
 		private State state;
+		public static int ten;
 		
 
 		public static void main(String[] args) {
-			Thread one = new Thread(new Sleeper(1));
+			Thread one = new Thread(new Sleeper());
 			one.start();
 		}
 
-		public Sleeper(int number) {
-			this.number = number;
-			this.second = (int) (100);
+		public Sleeper() {
+			this.second = (int) (1000);
 			this.cure = new Cure();
 			
 		}
@@ -36,6 +36,7 @@ public class Sleeper implements Runnable {
 					Thread.sleep(second);
 					days++;
 					dayYear++;
+					ten++;
 						if(daysPerMonth[month] < days){
 							days = 1;
 							month++;
