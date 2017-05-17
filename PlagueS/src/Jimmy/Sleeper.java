@@ -42,6 +42,7 @@ public class Sleeper implements Runnable {
 						}
 						if(dayYear > 365){
 							dayYear = 1;
+							month = 1;
 							year++;
 						}
 					System.out.println("Day " +days + " Month " + months[month] + " Year " + year);
