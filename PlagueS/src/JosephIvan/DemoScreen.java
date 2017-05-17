@@ -1,31 +1,22 @@
 package JosephIvan;
 
-import java.util.List;
+import java.awt.Color;
+import java.awt.Graphics2D;
 
-import guiTeacher.interfaces.Visible;
-import guiTeacher.userInterfaces.FullFunctionScreen;
+public class PieChart extends guiTeacher.components.Component {
 
-public class DemoScreen extends FullFunctionScreen implements Runnable {
-
-
-
-	public DemoScreen(int width, int height) {
-		super(width, height);
-		// TODO Auto-generated constructor stub
+	public PieChart(int x, int y) {
+		super(x,y,300,300);
+		update();
 	}
 
 	@Override
-	public void initAllObjects(List<Visible> viewObjects) {
-		// TODO Auto-generated method stub
+	public void update(Graphics2D g) {
+		g.setColor(Color.cyan);
+		g.fillOval(0, 0, getWidth(), getHeight());
+		g.setColor(Color.blue);
+		g.fillArc(0, 0, getWidth(), getHeight(), 0, 20); 
 		
 	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		
-	}
-
-
 
 }
