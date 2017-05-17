@@ -1,5 +1,4 @@
-import java.awt.Color;
-import java.util.ArrayList;
+
 import java.util.List;
 
 import guiTeacher.components.Action;
@@ -7,7 +6,6 @@ import guiTeacher.components.Button;
 import guiTeacher.components.TextField;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
-import guiTeacher.userInterfaces.ClickableScreen;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class IntroScreen extends FullFunctionScreen{
@@ -37,6 +35,7 @@ public class IntroScreen extends FullFunctionScreen{
 		
 		
 		TextField input = new TextField(getHeight()/3,getWidth()/3,500,100,"Enter a name");
+		input.setSize(50);
 		
 		Button enter = new Button(getHeight()/3 + 550, getWidth()/3 + 50, 100, 50, "Enter", null);
 		
@@ -49,21 +48,12 @@ public class IntroScreen extends FullFunctionScreen{
 				bName = input.getText();
 				remove(input);
 				remove(enter);
-				Button welcome = new Button(getHeight()/3,getWidth()/3,500,100, "Welcome to Plague S", null);
-				welcome.setSize(30);
-				viewObjects.add(welcome);
-				welcome.setAction(new Action(){
-
-					@Override
-					public void act() {
-						// TODO Auto-generated method stub
-						
-					}
-					
-				});
+				PlagueS.game.setScreen(PlagueS.Mscreen);
 			}
 			
 		});
+		
+
 		
 		viewObjects.add(title);
 		viewObjects.add(input); 
