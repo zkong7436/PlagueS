@@ -1,6 +1,7 @@
 package Wendy;
 
 
+
 public class Climate {
 
 	private double averageTemp;

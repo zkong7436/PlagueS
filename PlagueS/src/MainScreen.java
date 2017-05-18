@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import Wendy.State;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
@@ -22,7 +21,10 @@ public class MainScreen extends FullFunctionScreen{
 	private TextLabel infected;
 	private TextLabel dead;
 	private String[] names;
-	private ArrayList<State> butts;
+	private static ArrayList<State> butts;
+
+
+	private boolean infectionStarted;
 
 	public MainScreen(int width, int height) {
 		super(width, height);
@@ -46,13 +48,29 @@ public class MainScreen extends FullFunctionScreen{
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
-				try {
-					TimeUnit.SECONDS.sleep(10);
-					remove(welcome);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+//				
+				Thread change = new Thread(new Runnable() {
+					
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						
+						welcome.setText("Click a state to begin");//dont know why text dont change before sleeping
+						try {
+							Thread.sleep(1000);
+							remove(welcome);
+							for(int i = 0; i< butts.size(); i++)
+							{
+								butts.get(i).setEnabled(true);
+							}
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+					}
+				});
+				change.start();
 				
 			}
 		
@@ -123,16 +141,25 @@ public class MainScreen extends FullFunctionScreen{
 						// TODO Auto-generated method stub
 						state = but;
 						addStatsBar(state);
+						if(!infectionStarted)
+						{
+							state.infect();
+							infectionStarted = true;
+						}
 					}
 					
 				});
 				but.setForeground(Color.red);
+				but.setEnabled(false);
 				butts.add(but);
 				i++;
 			}
 		}
 	}
 
+	public static ArrayList<State> getButts() {
+		return butts;
+	}
 
 
 

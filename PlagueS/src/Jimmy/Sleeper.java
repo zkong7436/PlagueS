@@ -1,6 +1,6 @@
 package Jimmy;
 
-import Wendy.State;
+import State;
 
 public class Sleeper implements Runnable {
 //xd////////
