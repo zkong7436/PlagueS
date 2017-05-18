@@ -1,3 +1,4 @@
+import Tracey.TransmissionsScreen;
 import guiTeacher.GUIApplication;
 
 /**
@@ -19,6 +20,8 @@ public class PlagueS extends GUIApplication {
 	public static IntroScreen Iscreen;
 	public static MainScreen Mscreen;
 	
+	public static TransmissionsScreen test;
+	
 	public static void main(String[] args){
 		game = new PlagueS();
 		Thread app = new Thread(game);
@@ -32,8 +35,8 @@ public class PlagueS extends GUIApplication {
 		// TODO Auto-generated method stub
 		Iscreen = new IntroScreen(getWidth(),getHeight());
 		Mscreen = new MainScreen(getWidth(), getHeight());
-		
-		setScreen(Iscreen);
+		test = new TransmissionsScreen(getWidth(), getHeight());
+		setScreen(test);
 	}
 
 }

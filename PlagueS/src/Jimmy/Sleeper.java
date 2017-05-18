@@ -25,7 +25,7 @@ public class Sleeper implements Runnable {
 		}
 
 		public Sleeper() {
-			this.second = (int) (1000);
+			this.second = (int) (10);
 			this.cure = new Cure();
 			
 		}

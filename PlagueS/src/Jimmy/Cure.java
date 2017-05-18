@@ -5,7 +5,7 @@ import State;
 public class Cure {
 	
 	private int cure= 0;
-	private double infectedPercentage = 40;
+	private double infectedPercentage = 61;
 	private double popDeadPercentage;
 	
 	public boolean activate = false;
@@ -24,7 +24,7 @@ public class Cure {
 			System.out.println("cure has started");
 			
 			//say cure starts
-			//run cure method counterr
+			//run cure method counter
 			if (infectedPercentage >= 60) {
 				cureBase(10);
 			}else if(infectedPercentage >= 40) {
@@ -41,18 +41,25 @@ public class Cure {
 		return false;
 	}
 	
-	public void makingCure(){
-		int rate;
+	public void makingCure(int rate){
+		int a = (rate * 100)/365;
+		if(a == 0){
+			System.out.println("Cure has not been started");
+		}
+		else{
+			System.out.println("Cure will be completed in " + a + " years");
+		}
 		
 	}
 	
 	public void cureBase(int base) {
 		if(Sleeper.ten % base == 0 ){
 		System.out.println(cure);
-		cure++;
+		cure++; 
+		infectedPercentage--;
+		makingCure(base);
 		}
-	}
-	
+	}	
 	
 	public boolean finishedCure(){
 		return false;
