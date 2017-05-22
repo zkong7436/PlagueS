@@ -120,6 +120,7 @@ public class State extends Button implements Runnable{
 		setInfected(true);
 		Thread stateStart = new Thread(this);
 		stateStart.start();
+		adStates = new ArrayList<State>();
 		findAdStates();
 		System.out.println("Finding ad states");
 	}
@@ -132,16 +133,13 @@ public class State extends Button implements Runnable{
 	}
 	
 	public void findAdStates(){
-		ArrayList<State> tempStates = main.MainScreen.getButts();
-		for(int i = 0; i< tempStates.size();i++)
+		for(int i = 0; i< main.MainScreen.getButts().size();i++)
 		{
-			if(Math.abs(tempStates.get(i).getX() - getX()) == getWidth())
+			if(Math.sqrt(Math.pow(getX() - main.MainScreen.getButts().get(i).getX(),2) + Math.pow(getY() - main.MainScreen.getButts().get(i).getY(),2)) <= getWidth()*2 && !main.MainScreen.getButts().get(i).getName().equals(getName()))
 			{
-				adStates.add(tempStates.get(i));
-			}
-			else if(Math.abs(tempStates.get(i).getY() - getY()) == getHeight())
-			{
-				adStates.add(tempStates.get(i));
+				System.out.println(getWidth());
+				adStates.add(main.MainScreen.getButts().get(i));
+				System.out.println(main.MainScreen.getButts().get(i).getName());
 			}
 		
 		}

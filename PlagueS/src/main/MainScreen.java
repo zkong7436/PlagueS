@@ -39,7 +39,7 @@ public class MainScreen extends FullFunctionScreen{
 		// TODO Auto-generated method stub
 		String[] names = {"California","Texas","Florida","New York","Pennsylvania","Illinois","Ohio","Georgia","North Carolina","Michigan","New Jersey","Virginia","Washington","Arizona","Massachusetts","Tennessee","Indiana","Missouri","Maryland","Wisconsin","Colorado","Minnesota","South Carolina","Alabama","Louisiana","Kentucky","Oregon","Oklahoma","Connecticut","Puerto Rico","Iowa","Utah","Mississippi","Arkansas","Nevada","Kansas","New Mexico","Nebraska","West Virginia","Idaho","Hawaii","New Hampshire","Maine","Rhode Island","Montana","Delaware","South Dakota","North Dakota","Alaska","Wyoming","Vermont"};
 		this.names = names;
-		
+		butts = new ArrayList<State>();
 		fillInButtons();
 		viewObjects.addAll(butts);
 		//width = 55 height = 110
@@ -127,7 +127,7 @@ public class MainScreen extends FullFunctionScreen{
 
 
 	public void fillInButtons(){
-		butts = new ArrayList<State>();
+		
 		int startY = 10;
 		int i = 0;
 		for(int row = 0; row < 5; row++){
