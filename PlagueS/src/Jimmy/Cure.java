@@ -39,7 +39,7 @@ public class Cure {
 		}
 		return false;
 	}
-	
+	 
 	public void makingCure(int rate){
 		int a = (rate * 100);
 		if(cure == 100){
