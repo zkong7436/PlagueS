@@ -33,8 +33,7 @@ public class Cure {
 			cureBase(20);
 		}
 		if(infectedPercentage >= 10 && counter < 1){
-				//say disease found in u.s
-			System.out.println("cure has ENDED");
+			System.out.println("A new disease is discovered in teh us");
 			counter++;
 			
 		}
@@ -42,12 +41,18 @@ public class Cure {
 	}
 	
 	public void makingCure(int rate){
-		int a = (rate * 100)/365;
-		if(a == 0){
-			System.out.println("Cure has not been started");
+		int a = (rate * 100);
+		if(cure == 100){
+			System.out.println("cure has been completed");
+		}
+		else if(a == 0){
+			System.out.println("No Cure is currently being made");
+		}
+		else if(a < 365){
+			System.out.println("Cure will be completed in " + a + " days");
 		}
 		else{
-			System.out.println("Cure will be completed in " + a + " years");
+			System.out.println("Cure will be completed in " + a/365 + " years");
 		}
 		
 	}
