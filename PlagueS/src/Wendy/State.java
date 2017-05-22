@@ -1,10 +1,11 @@
+package Wendy;
+
 
 
 
 import java.awt.Color;
 import java.util.ArrayList;
 
-import Wendy.Climate;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 
@@ -119,6 +120,8 @@ public class State extends Button implements Runnable{
 		setInfected(true);
 		Thread stateStart = new Thread(this);
 		stateStart.start();
+		findAdStates();
+		System.out.println("Finding ad states");
 	}
 	
 	public void run() {
@@ -129,19 +132,19 @@ public class State extends Button implements Runnable{
 	}
 	
 	public void findAdStates(){
-		ArrayList<State> tempStates = MainScreen.getButts();
-		for(int i = 0; i< tempStates.size();i++)
-		{
-			if(Math.abs(tempStates.get(i).getX() - getX()) == getWidth())
-			{
-				adStates.add(tempStates.get(i));
-			}
-			else if(Math.abs(tempStates.get(i).getY() - getY()) == getHeight())
-			{
-				adStates.add(tempStates.get(i));
-			}
-		
-		}
+//		ArrayList<State> tempStates = MainScreen.getButts();
+//		for(int i = 0; i< tempStates.size();i++)
+//		{
+//			if(Math.abs(tempStates.get(i).getX() - getX()) == getWidth())
+//			{
+//				adStates.add(tempStates.get(i));
+//			}
+//			else if(Math.abs(tempStates.get(i).getY() - getY()) == getHeight())
+//			{
+//				adStates.add(tempStates.get(i));
+//			}
+//		
+//		}
 	}
 
 
