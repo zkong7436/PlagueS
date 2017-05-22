@@ -132,19 +132,19 @@ public class State extends Button implements Runnable{
 	}
 	
 	public void findAdStates(){
-//		ArrayList<State> tempStates = MainScreen.getButts();
-//		for(int i = 0; i< tempStates.size();i++)
-//		{
-//			if(Math.abs(tempStates.get(i).getX() - getX()) == getWidth())
-//			{
-//				adStates.add(tempStates.get(i));
-//			}
-//			else if(Math.abs(tempStates.get(i).getY() - getY()) == getHeight())
-//			{
-//				adStates.add(tempStates.get(i));
-//			}
-//		
-//		}
+		ArrayList<State> tempStates = main.MainScreen.getButts();
+		for(int i = 0; i< tempStates.size();i++)
+		{
+			if(Math.abs(tempStates.get(i).getX() - getX()) == getWidth())
+			{
+				adStates.add(tempStates.get(i));
+			}
+			else if(Math.abs(tempStates.get(i).getY() - getY()) == getHeight())
+			{
+				adStates.add(tempStates.get(i));
+			}
+		
+		}
 	}
 
 
