@@ -12,7 +12,7 @@ import guiTeacher.interfaces.Visible;
 
 public class DemoScreen extends FullFunctionScreen implements Runnable {
  
- 
+	private WorldPage p = new WorldPage(20,20,600,600);
  
 public DemoScreen(int width, int height) {
 		super(width, height);
@@ -31,6 +31,7 @@ public DemoScreen(int width, int height) {
 			public void act() {
 			Display.setText("Cure Clicked");
 			Display.setCustomTextColor(Color.blue);
+			viewObjects.add(p);
 				
 			}		
 		}						
@@ -41,17 +42,17 @@ public DemoScreen(int width, int height) {
 			public void act() {
 			Display.setText("World Clicked");
 			Display.setCustomTextColor(Color.green);
+			remove(p);
 				
 			}
 			
 		});
 		
-		PieChart p = new PieChart(600,600);
+		//PieChart p = new PieChart(600,600);
 		String pics[] = {"Images/plague.jpg" };
 		Graphic background = new Graphic(0,0,1000,1000,pics[0]);
 		viewObjects.add(background);
 		viewObjects.add(Display);
-		viewObjects.add(p);
 		viewObjects.add(Cure);
 		viewObjects.add(World);
 		
