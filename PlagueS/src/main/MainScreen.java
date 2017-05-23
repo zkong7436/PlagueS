@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 import Wendy.State;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
+import guiTeacher.components.ClickableGraphic;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
@@ -22,9 +23,11 @@ public class MainScreen extends FullFunctionScreen{
 	private TextLabel population;
 	private TextLabel infected;
 	private TextLabel dead;
+	private TextLabel dnapoints;
 	private String[] names;
 	private static ArrayList<State> butts;
-
+	private static int DNA;
+	private Thread check;
 
 	private boolean infectionStarted;
 
@@ -94,6 +97,9 @@ public class MainScreen extends FullFunctionScreen{
 			}
 		});
 		
+		Graphic DNApoint = new Graphic(500, 750, 0.5, "Images/dna.png");
+		dnapoints = new TextLabel(600, 750, 200, 50, DNA + " points");
+		
 		viewObjects.add(welcome);
 		viewObjects.add(name);
 		viewObjects.add(population);
@@ -101,6 +107,92 @@ public class MainScreen extends FullFunctionScreen{
 		viewObjects.add(dead);
 		viewObjects.add(infection);
 		viewObjects.add(cure);
+		viewObjects.add(DNApoint);
+		viewObjects.add(dnapoints);
+		
+		 check = new Thread(new Runnable(){
+
+			@Override
+			public void run() {
+				System.out.println("running");
+				if(infectionStarted)
+				{
+					System.out.println("infection started");
+					startingDNA(viewObjects);
+				}
+			}
+			
+		});	
+		
+	}
+	
+	private void startingDNA(List<Visible> viewObjects){
+			Thread addPoints = new Thread(new Runnable(){
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					try {
+						System.out.println("Thread running");
+						int randTime = 1000 * (int) (Math.random() * 10);
+						if(findInfected() != null)
+						{
+							State randomInfectedState = findInfected();
+							Button clickMe = new Button(randomInfectedState.getX()+10, randomInfectedState.getY()+10, 100, 100, "Click",Color.red, null);
+							randomInfectedState.setEnabled(false);
+							clickMe.setEnabled(true);
+							System.out.println("Balloon being created");
+							clickMe.setAction(new Action(){
+								
+								@Override
+								public void act() {
+									// TODO Auto-generated method stub
+									DNA = DNA + 5;
+									dnapoints.setText(DNA + "");
+									System.out.println(""+DNA);
+									randomInfectedState.setEnabled(true);
+									remove(clickMe);
+								}
+								
+							});
+							viewObjects.add(clickMe);
+							Thread.sleep(2500);
+							if(viewObjects.contains(clickMe))
+							{
+								randomInfectedState.setEnabled(true);
+								remove(clickMe);
+							}
+						}
+						Thread.sleep(randTime);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+
+				private State findInfected() {
+					// TODO Auto-generated method stub
+					ArrayList<State> infected = new ArrayList<State>();
+					for(int i = 0; i<butts.size();i++)
+					{
+						if(butts.get(i).isInfected())
+						{
+							infected.add(butts.get(i));
+						}
+					}
+					if(infected.size() > 0)
+					{
+						int rand = (int) (Math.random() * infected.size());
+						return infected.get(rand);						
+					}
+					else
+						return null;
+				}
+				
+			});
+			addPoints.start();
+			
 	}
 	
 	private void addStatsBar(State s) {
@@ -145,8 +237,10 @@ public class MainScreen extends FullFunctionScreen{
 						addStatsBar(state);
 						if(!infectionStarted)
 						{
-							state.infect();
 							infectionStarted = true;
+							
+							state.infect();
+							check.run();
 						}
 					}
 					

@@ -137,9 +137,8 @@ public class State extends Button implements Runnable{
 		{
 			if(Math.sqrt(Math.pow(getX() - main.MainScreen.getButts().get(i).getX(),2) + Math.pow(getY() - main.MainScreen.getButts().get(i).getY(),2)) <= getWidth()*2 && !main.MainScreen.getButts().get(i).getName().equals(getName()))
 			{
-				System.out.println(getWidth());
 				adStates.add(main.MainScreen.getButts().get(i));
-				System.out.println(main.MainScreen.getButts().get(i).getName());
+				//System.out.println(main.MainScreen.getButts().get(i).getName());
 			}
 		
 		}
