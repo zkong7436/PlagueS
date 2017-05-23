@@ -1,25 +1,30 @@
 package JosephIvan;
 
-public class CureScreen extends guiTeacher.GUIApplication{
+
+public class CureDemo extends guiTeacher.GUIApplication{
 
 
 
-	public CureScreen(int width, int height) {
-		super(width, height);
+	public CureDemo(int width, int height) {
+		super(1000,1000);
+		setVisible(true);
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void initScreen() {
+		
 		DemoScreen cure = new DemoScreen(1000,1000);
 		setScreen(cure);		
 	}
 	public static void main (String[] args){
-		DemoScreen D = new DemoScreen(1000,1000);
+		CureDemo D = new CureDemo(1000,1000);
 		Thread app = new Thread(D);
 		app.start();
 		
 	}
 
 }
+
+
 
