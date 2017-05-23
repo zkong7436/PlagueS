@@ -48,6 +48,7 @@ public class Sleeper implements Runnable {
 						}
 					System.out.println("Day " + days + " Month " + months[month] + " Year " + year);
 						cure.isDetected();
+						
 					}
 				
 			} catch (InterruptedException e) {

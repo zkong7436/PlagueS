@@ -4,7 +4,7 @@ import Wendy.State;
 
 public class Cure {
 	
-	private int cure= 0;
+	private int curePercentage= 0;
 	private double infectedPercentage = 61;
 	private double popDeadPercentage;
 	
@@ -16,53 +16,61 @@ public class Cure {
 	}
 	
 	
-	public boolean isDetected(){
+	public void isDetected(){
 		//while every second passes
 		//infected = State.getInfectedpop
+		if (curePercentage < 100) {
+			if(infectedPercentage >= 20 || popDeadPercentage >= 3) {
+				System.out.println("cure has started");
+				
+				//say cure starts
+				//run cure method counter
+				if (infectedPercentage >= 60) {
+					cureBase(10);
+				}else if(infectedPercentage >= 40) {
+					cureBase(15);
+				}else
+				cureBase(20);
+			}
+			if(infectedPercentage >= 10 && counter < 1){
+				System.out.println("A new disease is discovered in teh us");
+				counter++;
+				
+			}
+		}else{
+			System.out.println("Cure has been completed and is being delivered around the world");
+		}
 		
-		if(infectedPercentage >= 20 || popDeadPercentage >= 3) {
-			System.out.println("cure has started");
-			
-			//say cure starts
-			//run cure method counter
-			if (infectedPercentage >= 60) {
-				cureBase(10);
-			}else if(infectedPercentage >= 40) {
-				cureBase(15);
-			}else
-			cureBase(20);
-		}
-		if(infectedPercentage >= 10 && counter < 1){
-			System.out.println("A new disease is discovered in teh us");
-			counter++;
-			
-		}
-		return false;
+		
+		
 	}
 	 
 	public void makingCure(int rate){
 		int a = (rate * 100);
-		if(cure == 100){
-			System.out.println("cure has been completed");
-		}
-		else if(a == 0){
+		int b = (a - curePercentage*rate);
+
+
+		if(a == 0){
 			System.out.println("No Cure is currently being made");
 		}
-		else if(a < 365){
-			System.out.println("Cure will be completed in " + a + " days");
+		else if(b < 365){
+			System.out.println("Cure will be completed in " + b + " days");
 		}
 		else{
-			System.out.println("Cure will be completed in " + a/365 + " years");
+			System.out.println("Cure will be completed in " + b/365 + " years");
 		}
 		
 	}
 	
 	public void cureBase(int base) {
 		if(Sleeper.ten % base == 0 ){
-		System.out.println(cure);
-		cure++; 
-		infectedPercentage--;
+		curePercentage++;
+		System.out.println(curePercentage + "%");
+		 
+//		infectedPercentage--;
 		makingCure(base);
+		
+		
 		}
 	}	
 	
