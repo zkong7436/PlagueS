@@ -42,17 +42,18 @@ public class Cure {
 	 
 	public void makingCure(int rate){
 		int a = (rate * 100);
+		int b = (a - cure*rate);
 		if(cure == 100){
 			System.out.println("cure has been completed");
 		}
 		else if(a == 0){
 			System.out.println("No Cure is currently being made");
 		}
-		else if(a < 365){
-			System.out.println("Cure will be completed in " + a + " days");
+		else if(b < 365){
+			System.out.println("Cure will be completed in " + b + " days");
 		}
 		else{
-			System.out.println("Cure will be completed in " + a/365 + " years");
+			System.out.println("Cure will be completed in " + b/365 + " years");
 		}
 		
 	}
@@ -61,7 +62,7 @@ public class Cure {
 		if(Sleeper.ten % base == 0 ){
 		System.out.println(cure);
 		cure++; 
-		infectedPercentage--;
+//		infectedPercentage--;
 		makingCure(base);
 		}
 	}	
