@@ -39,25 +39,23 @@ public class Cure {
 			}
 		}else{
 			System.out.println("Cure has been completed and is being delivered around the world");
-		}
-		
-		
-		
+		}		
 	}
 	 
 	public void makingCure(int rate){
 		int a = (rate * 100);
 		int b = (a - curePercentage*rate);
-
-
-		if(a == 0){
+		if(curePercentage == 100){
+			System.out.println("Cure is done!!");
+		}	
+		else if(a == 0){
 			System.out.println("No Cure is currently being made");
 		}
 		else if(b < 365){
-			System.out.println("Cure will be completed in " + b + " days");
+			System.out.println("Cure will be completed in " + b + " day(s)");
 		}
 		else{
-			System.out.println("Cure will be completed in " + b/365 + " years");
+			System.out.println("Cure will be completed in " + b/365 + " year(s)");
 		}
 		
 	}
@@ -65,8 +63,7 @@ public class Cure {
 	public void cureBase(int base) {
 		if(Sleeper.ten % base == 0 ){
 		curePercentage++;
-		System.out.println(curePercentage + "%");
-		 
+		System.out.println(curePercentage + "%");		 
 //		infectedPercentage--;
 		makingCure(base);
 		
