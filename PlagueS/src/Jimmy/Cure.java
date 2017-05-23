@@ -66,7 +66,7 @@ public class Cure {
 		System.out.println(curePercentage + "%");		 
 //		infectedPercentage--;
 		makingCure(base);
-		
+		 
 		
 		}
 	}	
