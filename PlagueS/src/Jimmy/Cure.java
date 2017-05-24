@@ -71,8 +71,10 @@ public class Cure {
 		}
 	}	
 	
-	public boolean finishedCure(){
-		return false;
-		
+	public void spreadCure(int base){
+		if(Sleeper.ten % base == 0 ){
+			infectedPercentage--;
+			System.out.println(infectedPercentage + "% infected :(");		 
+		}		
 	}
 }

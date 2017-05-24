@@ -21,6 +21,8 @@ public class State extends Button implements Runnable{
 	private  int deadPop;
 	private  int alivePop = population - deadPop;
 	private  int notInfectedPop = population - infectedPop;
+	private double rateOfInfection;
+	private double resisitance = 2;
 	//private double percentInfected = (double)(infectedPop/population);
 	
 	private final int POPULATION_US = getPopulation();
@@ -118,17 +120,30 @@ public class State extends Button implements Runnable{
 
 	public void infect(){
 		setInfected(true);
+		infectedPop = 1;
 		Thread stateStart = new Thread(this);
 		stateStart.start();
 		adStates = new ArrayList<State>();
 		findAdStates();
 		System.out.println("Finding ad states");
+		//run();
 	}
 	
 	public void run() {
 		while(isInfected())
 		{
-			
+			try {
+				int randomTime = 1000*(int)(Math.random() * 10);
+				System.out.println("THE INFECTION IS NOW SPREADING");
+				rateOfInfection = 1 + (0.01 * resisitance);
+				infectedPop = (int) (rateOfInfection * infectedPop);
+				Thread.sleep(randomTime);
+				resisitance = Math.pow(resisitance, 1.5);
+				System.out.println("" + infectedPop);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	
