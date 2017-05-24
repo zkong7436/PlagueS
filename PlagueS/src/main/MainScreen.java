@@ -134,13 +134,12 @@ public class MainScreen extends FullFunctionScreen{
 					// TODO Auto-generated method stub
 					try {
 						System.out.println("Thread running");
-						int randTime = 1000 * (int) (Math.random() * 10);
+						int randTime = 1000 * (int) (Math.random() * 5 + 1);
 						if(findInfected() != null)
 						{
 							State randomInfectedState = findInfected();
 							Button clickMe = new Button(randomInfectedState.getX()+10, randomInfectedState.getY()+10, 100, 100, "Click",Color.red, null);
 							randomInfectedState.setEnabled(false);
-							clickMe.setEnabled(true);
 							System.out.println("Balloon being created");
 							clickMe.setAction(new Action(){
 								
@@ -238,7 +237,6 @@ public class MainScreen extends FullFunctionScreen{
 						if(!infectionStarted)
 						{
 							infectionStarted = true;
-							
 							state.infect();
 							check.run();
 						}
