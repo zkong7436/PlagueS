@@ -7,7 +7,7 @@ import guiTeacher.GUIApplication;
  *
  */
 public class PlagueS extends GUIApplication {
-
+ 
 	/**
 	 * 
 	 */

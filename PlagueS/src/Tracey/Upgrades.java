@@ -24,7 +24,7 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 	public Upgrades(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
-	}
+	} 
  
 	public void initAllObjects(List<Visible> viewObjects) {
 		background = new Graphic(0,80, 0.65,"Images/back.jpg");

@@ -21,7 +21,7 @@ public class UpgradeButton extends Button {
 	 * @param w
 	 * @param h
 	 * @param text
-	 * @param color
+	 * @param color 
 	 * @param action
 	 */
 	private boolean isClicked;

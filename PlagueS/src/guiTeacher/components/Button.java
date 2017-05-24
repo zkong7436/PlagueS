@@ -42,7 +42,7 @@ public class Button extends TextLabel implements Clickable{
 		enabled = true;
 		this.action = action;
 		setCurve(35,25);
-		update();
+		update(); 
 		
 	}
 	
