@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import guiTeacher.components.Action;
-import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -17,8 +16,10 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public abstract class Upgrades extends FullFunctionScreen implements UpgradesInterface{
 
 	public static Graphic background;
-	public static Button tran;
-	public static Button symp;
+	public static ArrayList<UpgradeButton> buttons;
+	public static UpgradeButton tran;
+	public static UpgradeButton symp;
+	public static UpgradeButton abil;
 	
 	public Upgrades(int width, int height) {
 		super(width, height);
@@ -27,8 +28,9 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
  
 	public void initAllObjects(List<Visible> viewObjects) {
 		background = new Graphic(0,80, 0.65,"Images/back.jpg");
+		buttons = new ArrayList<UpgradeButton>();
 		
-		tran = new Button(0, 80, 200, 60, "Transmissions", Color.red, new Action(){
+		tran = new UpgradeButton(0, 80, 200, 60, "Transmissions", Color.white, new Action(){
 
 			@Override
 			public void act() {
@@ -36,9 +38,32 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 			}
 			
 		});
+		symp = new UpgradeButton(200, 80, 200, 60, "Symptoms", Color.white, new Action(){
+
+			@Override
+			public void act() {
+//				PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
+			}
+			
+		});
+		abil = new UpgradeButton(400, 80, 200, 60, "Abilities", Color.white, new Action(){
+
+			@Override
+			public void act() {
+//				PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
+			}
+			
+		});
+		
 		tran.setSize(20);
+		symp.setSize(20);
+		abil.setSize(20);
+		
+		buttons.add(tran);
+		buttons.add(symp);
+		buttons.add(abil);
 		viewObjects.add(background);
-		viewObjects.add(tran);
+		viewObjects.addAll(buttons);
 	}
 	
 	public abstract void initItems(ArrayList<Visible> viewObjects);

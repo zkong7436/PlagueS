@@ -155,12 +155,4 @@ public class Button extends TextLabel implements Clickable{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-
 }
