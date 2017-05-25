@@ -30,11 +30,12 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 		background = new Graphic(0,80, 0.65,"Images/back.jpg");
 		buttons = new ArrayList<UpgradeButton>();
 		
-		tran = new UpgradeButton(0, 80, 200, 60, "Transmissions", Color.white, new Action(){
+		tran = new UpgradeButton(0, 80, 200, 60, "Transmission", Color.white, new Action(){
 
 			@Override
 			public void act() {
-//				PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
+				main.PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
+				
 			}
 			
 		});
@@ -42,7 +43,7 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 
 			@Override
 			public void act() {
-//				PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
+				main.PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
 			}
 			
 		});
@@ -50,10 +51,10 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 
 			@Override
 			public void act() {
-//				PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
+				main.PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
 			}
 			
-		});
+		}); 
 		
 		tran.setSize(20);
 		symp.setSize(20);
@@ -64,8 +65,9 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 		buttons.add(abil);
 		viewObjects.add(background);
 		viewObjects.addAll(buttons);
+		initItems(viewObjects);
 	}
 	
-	public abstract void initItems(ArrayList<Visible> viewObjects);
+	public abstract void initItems(List<Visible> viewObjects);
 
 }
