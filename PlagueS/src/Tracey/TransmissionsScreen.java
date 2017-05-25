@@ -21,7 +21,7 @@ public class TransmissionsScreen extends Upgrades {
 	 * @param height
 	 */
 	private ArrayList<ClickableGraphic> tools;
-	
+	 
 	
 	public TransmissionsScreen(int width, int height) {
 		super(width, height);

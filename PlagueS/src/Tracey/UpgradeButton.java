@@ -15,7 +15,7 @@ import guiTeacher.components.Button;
  *
  */
 public class UpgradeButton extends Button {
-
+ 
 	/**
 	 * @param x
 	 * @param y

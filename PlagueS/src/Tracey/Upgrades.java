@@ -54,7 +54,7 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 				main.PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
 			}
 			
-		});
+		}); 
 		
 		tran.setSize(20);
 		symp.setSize(20);
