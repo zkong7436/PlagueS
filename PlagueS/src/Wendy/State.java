@@ -22,7 +22,7 @@ public class State extends Button implements Runnable{
 	private  int alivePop = population - deadPop;
 	private  int notInfectedPop = population - infectedPop;
 	private double rateOfInfection;
-	private double resisitance = 2;
+	private double resisitance = 1.18954723;
 	//private double percentInfected = (double)(infectedPop/population);
 	
 	private final int POPULATION_US = getPopulation();
@@ -135,18 +135,57 @@ public class State extends Button implements Runnable{
 			try {
 				int randomTime = 1000*(int)(Math.random() * 10);
 				System.out.println("THE INFECTION IS NOW SPREADING");
-				rateOfInfection = 1 + (0.01 * resisitance);
-				infectedPop = (int) (rateOfInfection * infectedPop);
+				rateOfInfection = 1 + (0.1 * resisitance);
+				if((int) (rateOfInfection * infectedPop) > population)
+				{
+					infectedPop = population - deadPop;
+				}
+				else{					
+					infectedPop = (int) (rateOfInfection * infectedPop);
+				}
 				Thread.sleep(randomTime);
-				resisitance = Math.pow(resisitance, 1.5);
+				resisitance = Math.pow(Math.E/3*2, resisitance);
 				System.out.println("" + infectedPop);
+				if(infectedPop >= population * 0.55)
+				{
+					int spread = (int)(Math.random() * 2 );
+					while(spread > 0 && adStates.size() > 0)
+					{
+						System.out.println("INFECTION IS NOW SPREADING TO OTHER STATE");
+						int ran = (int) (Math.random() * adStates.size());
+						adStates.get(ran).infect();	
+						adStates.remove(ran);
+						if(infectedPop >= population * 0.7)
+						{							
+							if(infectedPop >= population * 0.8)
+							{
+								if(infectedPop >= population * 0.9)
+								{
+									System.out.println("People are now dying" + deadPop);
+									Thread.sleep(3000);
+									deadPop+= 5;
+								}
+								else{
+									Thread.sleep(5000);
+									deadPop+= 2;
+								}
+							}
+							else{
+								Thread.sleep(8000);
+								deadPop+= 1;
+							}
+						}
+						spread--;
+					}
+				}
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
+
 	}
-	
+
 	public void findAdStates(){
 		for(int i = 0; i< main.MainScreen.getButts().size();i++)
 		{

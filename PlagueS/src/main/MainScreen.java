@@ -204,15 +204,15 @@ public class MainScreen extends FullFunctionScreen{
 			population.setSize(25);
 			infected = new TextLabel(40,220,1000,50,"Infected: ");
 			infected.setSize(25);
-			dead = new TextLabel(40,270,100,50,"Dead: ");
+			dead = new TextLabel(40,270,1000,50,"Dead: ");
 			dead.setSize(25);
 		}
 		else
 		{
 			name.setText("State: " + s.getName());
 			population.setText("Population: " + s.getPopulation());
-			infected.setText("Infected " + s.getInfectedPop());
-			dead.setText("Dead " + s.getDeadPop());
+			infected.setText("Infected: " + s.getInfectedPop());
+			dead.setText("Dead: " + s.getDeadPop());
 		}
 	}
 
@@ -226,7 +226,7 @@ public class MainScreen extends FullFunctionScreen{
 			startY+=110;
 			for(int col = 0; col < 10; col++){
 				startX+=60;
-				State but = new State(startX,startY,55,110,"T",null,names[i], 100, null);
+				State but = new State(startX,startY,55,110,"T",null,names[i], 636000, null);
 				but.setAction(new Action(){
 
 					@Override
