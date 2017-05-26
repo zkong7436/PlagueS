@@ -21,7 +21,7 @@ public class News {
 			"Billions of dollars of damage caused in <country>. WHO expects it will take years to repair the damage caused to thousands of businesses, homes and research facilities.",
 			"The investment bank reported catastrophic losses today due to a technical error in their random number generator",
 			"Tsunami hits <country>: Extreme tsunami hits <country>. WHO analysts expect significant property damage and electricity shortages",
-			
+			 
 	};
 			
 	public News(String news) {
