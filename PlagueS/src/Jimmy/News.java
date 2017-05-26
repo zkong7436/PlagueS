@@ -16,9 +16,17 @@ public class News {
 			"The cure has reached " + curePercent + "% completion",
 			"The cure has reached 100% completion is is now being sent around the country"};
 	
+	private String[] currentEvents = { "The results are in, and the president of the United States is Donald J Trump!",
+			"Festival of Love in <name of country>: <name of country> celebrates the Festival of Love. Fans praise the replacement of International Kissing Day. Critics question hygiene standards",
+			"Billions of dollars of damage caused in <country>. WHO expects it will take years to repair the damage caused to thousands of businesses, homes and research facilities.",
+			"The investment bank reported catastrophic losses today due to a technical error in their random number generator",
+			"Tsunami hits <country>: Extreme tsunami hits <country>. WHO analysts expect significant property damage and electricity shortages",
+			
+	};
+			
 	public News(String news) {
 		currentNews = news;
-	}
+	} 
 	
 	public String getCurrentNews() {
 		return currentNews;
