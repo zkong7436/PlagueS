@@ -138,7 +138,7 @@ public class MainScreen extends FullFunctionScreen{
 						if(findInfected() != null)
 						{
 							State randomInfectedState = findInfected();
-							Button clickMe = new Button(randomInfectedState.getX()+10, randomInfectedState.getY()+10, 100, 100, "Click",Color.red, null);
+							ClickableGraphic clickMe = new ClickableGraphic(randomInfectedState.getX()+10, randomInfectedState.getY()+10, 1.0, "Images/dnaPoints.png");
 							randomInfectedState.setEnabled(false);
 							System.out.println("Balloon being created");
 							clickMe.setAction(new Action(){
@@ -154,7 +154,7 @@ public class MainScreen extends FullFunctionScreen{
 								}
 								
 							});
-							viewObjects.add(clickMe);
+							addObject(clickMe);
 							Thread.sleep(2500);
 							if(viewObjects.contains(clickMe))
 							{
@@ -226,7 +226,7 @@ public class MainScreen extends FullFunctionScreen{
 			startY+=110;
 			for(int col = 0; col < 10; col++){
 				startX+=60;
-				State but = new State(startX,startY,55,110,"T",null,names[i], 636000, null);
+				State but = new State(startX,startY,55,110,"T",null,names[i], 100, null);//636000
 				but.setAction(new Action(){
 
 					@Override

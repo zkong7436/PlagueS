@@ -135,16 +135,17 @@ public class State extends Button implements Runnable{
 			try {
 				int randomTime = 1000*(int)(Math.random() * 10);
 				System.out.println("THE INFECTION IS NOW SPREADING");
-				rateOfInfection = 1 + (0.1 * resisitance);
-				if((int) (rateOfInfection * infectedPop) > population)
-				{
-					infectedPop = population - deadPop;
-				}
-				else{					
-					infectedPop = (int) (rateOfInfection * infectedPop);
-				}
+				//rateOfInfection = 1 + (0.1 * resisitance);
+//				if((int) (rateOfInfection * infectedPop) > population)
+//				{
+//					infectedPop = population - deadPop;
+//				}
+//				else{					
+//					infectedPop = (int) (rateOfInfection * infectedPop);
+				infectedPop+= 5;
+//				}
 				Thread.sleep(randomTime);
-				resisitance = Math.pow(Math.E/3*2, resisitance);
+				//resisitance = Math.pow(Math.E/3*2, resisitance);
 				System.out.println("" + infectedPop);
 				if(infectedPop >= population * 0.55)
 				{
@@ -156,7 +157,8 @@ public class State extends Button implements Runnable{
 						adStates.get(ran).infect();	
 						adStates.remove(ran);
 						if(infectedPop >= population * 0.7)
-						{							
+						{
+							setForeground(Color.pink);
 							if(infectedPop >= population * 0.8)
 							{
 								if(infectedPop >= population * 0.9)
