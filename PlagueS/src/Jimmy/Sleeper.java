@@ -6,13 +6,13 @@ public class Sleeper implements Runnable {
 //xd////////
 		private int number;
 		private int second;
-		private int days;
-		private int month;
+		public int days;
+		public int month;
 		private boolean gameOn = true;
 		private boolean cureStarted = false;
-		private String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+		public String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
 		private int[] daysPerMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
-		private int year = 2017;
+		public int year = 2017;
 		private int dayYear;
 		private Cure cure;
 		private State state;
@@ -25,7 +25,7 @@ public class Sleeper implements Runnable {
 		}
 
 		public Sleeper() {
-			this.second = (int) (10);
+			this.second = (int) (1000);
 			this.cure = new Cure();
 			
 		}

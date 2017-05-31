@@ -2,6 +2,7 @@ package JosephIvan;
 import java.awt.Color;
 import java.util.List;
 
+import Jimmy.Sleeper;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
@@ -30,8 +31,9 @@ public DemoScreen(int width, int height) {
 		// doing this in Connell's room so I haven't tested it yet.
 		//Might not be in nockles' class today bc i'm going to get medicine. My right hand is really swollen. I'll send a pic bro.
 		Sleeper date = new Sleeper();
-		date.run();
+		//date.run();
 		TextLabel dd = new TextLabel(20, 40, 1000, 40, "Day " + date.days + " Month " + date.months[date.month] + " Year " + date.year);
+		
 		
 		
 		TextLabel Display = new TextLabel(20, 40, 1000, 40, "hjkhk");
