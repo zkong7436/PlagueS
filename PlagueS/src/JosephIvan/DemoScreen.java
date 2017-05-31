@@ -30,7 +30,7 @@ public DemoScreen(int width, int height) {
 		// doing this in Connell's room so I haven't tested it yet.
 		//Might not be in nockles' class today bc i'm going to get medicine. My right hand is really swollen. I'll send a pic bro.
 		Sleeper date = new Sleeper();
-		Sleeper.run();
+		date.run();
 		TextLabel dd = new TextLabel(20, 40, 1000, 40, "Day " + date.days + " Month " + date.months[date.month] + " Year " + date.year);
 		
 		
