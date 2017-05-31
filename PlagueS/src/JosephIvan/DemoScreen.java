@@ -24,6 +24,16 @@ public DemoScreen(int width, int height) {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		
+		//work on Sleeper here
+		// created a new instance
+		// doing this in Connell's room so I haven't tested it yet.
+		//Might not be in nockles' class today bc i'm going to get medicine. My right hand is really swollen. I'll send a pic bro.
+		Sleeper date = new Sleeper();
+		Sleeper.run();
+		TextLabel dd = new TextLabel(20, 40, 1000, 40, "Day " + date.days + " Month " + date.months[date.month] + " Year " + date.year);
+		
+		
 		TextLabel Display = new TextLabel(20, 40, 1000, 40, "hjkhk");
 		Button Cure = new Button(100,100, 100, 100, "Cure", Color.blue, new Action(){
 
@@ -55,6 +65,7 @@ public DemoScreen(int width, int height) {
 		viewObjects.add(Display);
 		viewObjects.add(Cure);
 		viewObjects.add(World);
+		viewObjects.add(dd);
 		
 		
 	}
