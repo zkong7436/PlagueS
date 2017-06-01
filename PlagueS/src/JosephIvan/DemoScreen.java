@@ -9,11 +9,16 @@ import guiTeacher.components.Graphic;
 import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
  import guiTeacher.userInterfaces.FullFunctionScreen;
+import main.PlagueS;
  
 
 public class DemoScreen extends FullFunctionScreen implements Runnable {
  
 	private WorldPage p = new WorldPage(20,20,600,600);
+	private int days = 0;
+	private String months = "";
+	private int years = 0;
+	Sleeper date = new Sleeper();
  
 public DemoScreen(int width, int height) {
 		super(width, height);
@@ -26,14 +31,9 @@ public DemoScreen(int width, int height) {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		
-		//work on Sleeper here
-		// created a new instance
-		// doing this in Connell's room so I haven't tested it yet.
-		//Might not be in nockles' class today bc i'm going to get medicine. My right hand is really swollen. I'll send a pic bro.
-		Sleeper date = new Sleeper();
-		//date.run();
-		TextLabel dd = new TextLabel(20, 40, 1000, 40, "Day " + date.days + " Month " + date.months[date.month] + " Year " + date.year);
 		
+		//Sleeper date = new Sleeper();
+		//date.run();
 		
 		
 		TextLabel Display = new TextLabel(20, 40, 1000, 40, "hjkhk");
@@ -55,14 +55,17 @@ public DemoScreen(int width, int height) {
 			Display.setText("World Clicked");
 			Display.setCustomTextColor(Color.green);
 			remove(p);
+			//main.PlagueS.game.setScreen(PlagueS.Mscreen);
 				
 			}
 			
 		});
 		
+		TextLabel dd = new TextLabel(200, 400, 1000, 40, "Day " + days + " Month " + months + " Year " + years);
+		
 		//PieChart p = new PieChart(600,600);
-		String pics[] = {"Images/plague.jpg" };
-		Graphic background = new Graphic(0,0,1000,1000,pics[0]);
+		Graphic background = new Graphic(0,0,1000,1000,"");
+		//Images/plague.jpg
 		viewObjects.add(background);
 		viewObjects.add(Display);
 		viewObjects.add(Cure);
@@ -70,6 +73,16 @@ public DemoScreen(int width, int height) {
 		viewObjects.add(dd);
 		
 		
+	}
+	public void getDays(){
+		days= date.days;
+		update();
+	}
+	public void getMonths(){
+		months = date.months[date.month];
+	}
+	public void getYears(){
+		years = date.year;
 	}
 
 
