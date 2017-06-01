@@ -22,14 +22,18 @@ public class State extends Button implements Runnable{
 	private  int alivePop = population - deadPop;
 	private  int notInfectedPop = population - infectedPop;
 	private double rateOfInfection;
-	private double resisitance = 1.18954723;
+	//private double transmission = 1.18954723;
+	private double transmission = 4;
 	//private double percentInfected = (double)(infectedPop/population);
+	private boolean Lpink;
+	private boolean red;
+	private boolean black;
 	
 	private final int POPULATION_US = getPopulation();
 	
 	
 	public State(int x, int y, int w, int h, String text, Action action, String name, int population, Climate climate) {
-		super(x, y, w, h, text,Color.blue, action);
+		super(x, y, w, h, text,Color.white, action);
 		// TODO Auto-generated constructor stub
 		this.name = name;
 		this.climate = climate;
@@ -133,39 +137,55 @@ public class State extends Button implements Runnable{
 		while(isInfected())
 		{
 			try {
-				int randomTime = 1000*(int)(Math.random() * 10);
+				int randomTime = 1000*(int)(Math.random() * 5);
 				System.out.println("THE INFECTION IS NOW SPREADING");
-				//rateOfInfection = 1 + (0.1 * resisitance);
-//				if((int) (rateOfInfection * infectedPop) > population)
-//				{
-//					infectedPop = population - deadPop;
-//				}
-//				else{					
-//					infectedPop = (int) (rateOfInfection * infectedPop);
-				infectedPop+= 5;
-//				}
+				rateOfInfection = rateOfInfection + transmission;
+				if(infectedPop + rateOfInfection >= population || infectedPop >= population)
+				{
+					infectedPop = population - deadPop;
+				}
+				else{					
+					infectedPop = (int) (rateOfInfection + infectedPop);
+				}
 				Thread.sleep(randomTime);
-				//resisitance = Math.pow(Math.E/3*2, resisitance);
 				System.out.println("" + infectedPop);
 				if(infectedPop >= population * 0.55)
 				{
-					int spread = (int)(Math.random() * 2 );
+					int spread = (int)(Math.random() * 2 +1);
 					while(spread > 0 && adStates.size() > 0)
 					{
 						System.out.println("INFECTION IS NOW SPREADING TO OTHER STATE");
 						int ran = (int) (Math.random() * adStates.size());
 						adStates.get(ran).infect();	
 						adStates.remove(ran);
-						if(infectedPop >= population * 0.7)
+						spread--;
+					}
+					if(infectedPop >= population * 0.7)
+					{
+						if(!Lpink)
 						{
-							setForeground(Color.pink);
-							if(infectedPop >= population * 0.8)
+							setBackground(new Color(255, 204, 204));
+							Lpink = true;
+							update();							
+						}
+						else if(infectedPop >= population * 0.8)
+						{
+							if(!red)
 							{
-								if(infectedPop >= population * 0.9)
+								setBackground(Color.red);
+								red =true;
+								update();								
+							}else if(infectedPop >= population * 0.9){
+								setBackground(new Color(255, 102, 102));
+								update();
+								System.out.println("People are now dying" + deadPop);
+								Thread.sleep(3000);
+								deadPop+= 5;
+								if(deadPop > population * 0.3 && !black)
 								{
-									System.out.println("People are now dying" + deadPop);
-									Thread.sleep(3000);
-									deadPop+= 5;
+									setBackground(Color.black);
+									black = true;
+									update();
 								}
 								else{
 									Thread.sleep(5000);
@@ -177,7 +197,6 @@ public class State extends Button implements Runnable{
 								deadPop+= 1;
 							}
 						}
-						spread--;
 					}
 				}
 			} catch (InterruptedException e) {

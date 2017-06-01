@@ -33,7 +33,26 @@ public class MainScreen extends FullFunctionScreen{
 
 	public MainScreen(int width, int height) {
 		super(width, height);
-
+		Thread update = new Thread(new Runnable() {
+			
+			@Override
+			public void run() {
+				while(true)
+				{
+					update();
+					if (state != null) addStatsBar(state);
+					try {
+						Thread.sleep(60);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					};
+					
+				}
+				
+			}
+		});
+		update.start();
 	}
 
 
@@ -147,7 +166,7 @@ public class MainScreen extends FullFunctionScreen{
 								public void act() {
 									// TODO Auto-generated method stub
 									DNA = DNA + 5;
-									dnapoints.setText(DNA + "");
+									dnapoints.setText(DNA + " points");
 									System.out.println(""+DNA);
 									randomInfectedState.setEnabled(true);
 									remove(clickMe);
@@ -226,14 +245,14 @@ public class MainScreen extends FullFunctionScreen{
 			startY+=110;
 			for(int col = 0; col < 10; col++){
 				startX+=60;
-				State but = new State(startX,startY,55,110,"T",null,names[i], 100, null);//636000
+				State but = new State(startX,startY,55,110,"T",null,names[i], 6360, null);//636000
 				but.setAction(new Action(){
 
 					@Override
 					public void act() {
 						// TODO Auto-generated method stub
 						state = but;
-						addStatsBar(state);
+						
 						if(!infectionStarted)
 						{
 							infectionStarted = true;

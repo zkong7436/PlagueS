@@ -21,7 +21,7 @@ public class TestSpreadRate implements Runnable{
 		infected = true;
 		second = (int)(1000);
 		infectedPop = 1;
-		spreadRate = 4;
+		spreadRate = 1;
 	}
 
 	/**
@@ -38,7 +38,7 @@ public class TestSpreadRate implements Runnable{
 			try {
 				Thread.sleep(second);
 				System.out.println("Infected population: "+infectedPop);
-				infectedPop+=(int)(Math.random()*spreadRate);
+				infectedPop+=(int)((Math.random()*4)+spreadRate);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
