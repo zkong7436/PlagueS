@@ -1,12 +1,13 @@
 package Jimmy;
 
 import Wendy.State;
+import guiTeacher.components.TextLabel;
 
 public class Sleeper implements Runnable {
 //xd////////
 		private int number;
 		private int second;
-		public int days;
+		public int days ;
 		public int month;
 		private boolean gameOn = true;
 		private boolean cureStarted = false;
@@ -17,7 +18,12 @@ public class Sleeper implements Runnable {
 		private Cure cure;
 		private State state;
 		public static int ten;
+		private TextLabel display;
 		
+
+		public void setDisplay(TextLabel display) {
+			this.display = display;
+		}
 
 		public static void main(String[] args) {
 			Thread one = new Thread(new Sleeper());
@@ -46,7 +52,10 @@ public class Sleeper implements Runnable {
 							month = 0;
 							year++;
 						}
-					System.out.println("Day " + days + " Month " + months[month] + " Year " + year);
+					if(display!=null){
+						display.setText("Day " + days + " Month " + months[month] + " Year " + year);
+					}
+						System.out.println("Day " + days + " Month " + months[month] + " Year " + year);
 						cure.isDetected();
 						
 					}
