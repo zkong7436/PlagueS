@@ -15,14 +15,31 @@ import main.PlagueS;
 public class DemoScreen extends FullFunctionScreen implements Runnable {
  
 	private WorldPage p = new WorldPage(20,20,600,600);
-	private int days = 0;
-	private String months = "";
-	private int years = 0;
-	Sleeper date = new Sleeper();
+	//Sleeper date = new Sleeper();
  
 public DemoScreen(int width, int height) {
 		super(width, height);
 		setVisible(true);
+		Thread update = new Thread(new Runnable(){
+
+			@Override
+			public void run() {
+				
+				while(true){
+					update();
+					try {
+						Thread.sleep(50);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				}
+				
+			}
+
+		}
+				);
+		update.start();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -31,9 +48,7 @@ public DemoScreen(int width, int height) {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 		
-		
-		//Sleeper date = new Sleeper();
-		//date.run();
+
 		
 		
 		TextLabel Display = new TextLabel(20, 40, 1000, 40, "hjkhk");
@@ -61,8 +76,8 @@ public DemoScreen(int width, int height) {
 			
 		});
 		
-		TextLabel dd = new TextLabel(200, 400, 1000, 40, "Day " + days + " Month " + months + " Year " + years);
-		
+		TextLabel dd = new TextLabel(200, 400, 1000, 40, "Day " + CureDemo.date.days + " Month " + CureDemo.date.months[CureDemo.date.month] + " Year " + CureDemo.date.year);
+		CureDemo.date.setDisplay(dd);
 		//PieChart p = new PieChart(600,600);
 		Graphic background = new Graphic(0,0,1000,1000,"");
 		//Images/plague.jpg
@@ -73,16 +88,6 @@ public DemoScreen(int width, int height) {
 		viewObjects.add(dd);
 		
 		
-	}
-	public void getDays(){
-		days= date.days;
-		update();
-	}
-	public void getMonths(){
-		months = date.months[date.month];
-	}
-	public void getYears(){
-		years = date.year;
 	}
 
 
