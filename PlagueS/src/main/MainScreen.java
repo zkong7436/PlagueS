@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import JosephIvan.CureDemo;
 import Wendy.State;
 import guiTeacher.components.Action;
 import guiTeacher.components.Button;
@@ -28,6 +29,7 @@ public class MainScreen extends FullFunctionScreen{
 	private static ArrayList<State> butts;
 	private static int DNA;
 	private Thread check;
+	private int worldPop;
 
 	private boolean infectionStarted;
 
@@ -42,7 +44,7 @@ public class MainScreen extends FullFunctionScreen{
 					update();
 					if (state != null) addStatsBar(state);
 					try {
-						Thread.sleep(60);
+						Thread.sleep(30);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -65,6 +67,7 @@ public class MainScreen extends FullFunctionScreen{
 		fillInButtons();
 		viewObjects.addAll(butts);
 		//width = 55 height = 110
+		getWorldPop();
 		
 		Button welcome = new Button(getWidth()/6, getHeight()/3,900,100,"Welcome to PlagueS! \n You are a new Bacteria. To win, you must evolve and spread across the country - wiping out all humans in the Plague",Color.red,null);
 		welcome.setAction(new Action(){
@@ -119,6 +122,8 @@ public class MainScreen extends FullFunctionScreen{
 		Graphic DNApoint = new Graphic(500, 750, 0.5, "Images/dna.png");
 		dnapoints = new TextLabel(600, 750, 200, 50, DNA + " points");
 		
+		
+		
 		viewObjects.add(welcome);
 		viewObjects.add(name);
 		viewObjects.add(population);
@@ -127,7 +132,7 @@ public class MainScreen extends FullFunctionScreen{
 		viewObjects.add(infection);
 		viewObjects.add(cure);
 		viewObjects.add(DNApoint);
-		viewObjects.add(dnapoints);
+		viewObjects.add(dnapoints);	
 		
 		 check = new Thread(new Runnable(){
 
@@ -137,14 +142,26 @@ public class MainScreen extends FullFunctionScreen{
 				if(infectionStarted)
 				{
 					System.out.println("infection started");
+					TextLabel dd = new TextLabel(800, 50, 1000, 40, "Day " + PlagueS.date.days + " Month " + PlagueS.date.months[PlagueS.date.month] + " Year " + PlagueS.date.year);
+					PlagueS.date.setDisplay(dd);
+					viewObjects.add(dd);
 					startingDNA(viewObjects);
 				}
 			}
 			
 		});	
-		
 	}
 	
+	private void getWorldPop() {
+		// TODO Auto-generated method stub
+		
+		for(int i = 0; i< butts.size(); i++)
+		{
+			worldPop += butts.get(i).getPopulation();
+		}
+	}
+
+
 	private void startingDNA(List<Visible> viewObjects){
 			Thread addPoints = new Thread(new Runnable(){
 
@@ -257,7 +274,7 @@ public class MainScreen extends FullFunctionScreen{
 						{
 							infectionStarted = true;
 							state.infect();
-							check.run();
+							check.start();
 						}
 					}
 					

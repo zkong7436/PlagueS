@@ -23,11 +23,15 @@ public class State extends Button implements Runnable{
 	private  int notInfectedPop = population - infectedPop;
 	private double rateOfInfection;
 	//private double transmission = 1.18954723;
-	private double transmission = 4;
+	private double transmission = 8;
 	//private double percentInfected = (double)(infectedPop/population);
-	private boolean Lpink;
-	private boolean red;
-	private boolean black;
+	private boolean forty;
+	private boolean sixty;
+	private boolean eighty;
+	private boolean ninty;
+	private boolean infecting;
+	private boolean dying;
+	private boolean moreDying;
 	
 	private final int POPULATION_US = getPopulation();
 	
@@ -137,19 +141,26 @@ public class State extends Button implements Runnable{
 		while(isInfected())
 		{
 			try {
-				int randomTime = 1000*(int)(Math.random() * 5);
+				int randomTime = 1000*(int)(Math.random() * 4);
 				System.out.println("THE INFECTION IS NOW SPREADING");
 				rateOfInfection = rateOfInfection + transmission;
-				if(infectedPop + rateOfInfection >= population || infectedPop >= population)
+				if(infectedPop + rateOfInfection >= population)
 				{
 					infectedPop = population - deadPop;
+					infecting = false;
 				}
 				else{					
 					infectedPop = (int) (rateOfInfection + infectedPop);
 				}
 				Thread.sleep(randomTime);
 				System.out.println("" + infectedPop);
-				if(infectedPop >= population * 0.55)
+				if(infectedPop >= population * 0.4 & !forty)
+				{
+					setBackground(Color.pink);
+					forty = true;		
+					update();
+				}
+				else if(infectedPop >= population * 0.6)
 				{
 					int spread = (int)(Math.random() * 2 +1);
 					while(spread > 0 && adStates.size() > 0)
@@ -160,43 +171,57 @@ public class State extends Button implements Runnable{
 						adStates.remove(ran);
 						spread--;
 					}
-					if(infectedPop >= population * 0.7)
+					if(!sixty)
 					{
-						if(!Lpink)
+						//setBackground(new Color(255, 204, 204));
+						setBackground(new Color(240,128,128));
+						sixty = true;		
+						update();
+					}
+					else if(infectedPop >= population * 0.8)
+					{
+						if(!eighty)
 						{
-							setBackground(new Color(255, 204, 204));
-							Lpink = true;
-							update();							
-						}
-						else if(infectedPop >= population * 0.8)
+							setBackground(Color.red);
+							eighty =true;	
+							update();
+						}else if(infectedPop >= population * 0.9)
 						{
-							if(!red)
+							if(!ninty)
 							{
-								setBackground(Color.red);
-								red =true;
-								update();								
-							}else if(infectedPop >= population * 0.9){
-								setBackground(new Color(255, 102, 102));
+								setBackground(new Color(139,0,0));
+								ninty = true;
 								update();
-								System.out.println("People are now dying" + deadPop);
-								Thread.sleep(3000);
-								deadPop+= 5;
-								if(deadPop > population * 0.3 && !black)
+							}
+							System.out.println("People are now dying" + deadPop);
+							Thread.sleep(8000);
+							deadPop+= 25;
+							if(deadPop > population * 0.3 )
+							{
+								if(!dying)
 								{
-									setBackground(Color.black);
-									black = true;
+									setBackground(Color.gray);
+									dying = true;
 									update();
 								}
-								else{
-									Thread.sleep(5000);
-									deadPop+= 2;
-								}
+								Thread.sleep(4000);
+								deadPop+= 30;
 							}
 							else{
-								Thread.sleep(8000);
-								deadPop+= 1;
+								if(deadPop > population * 0.6)
+								{
+									if(!moreDying)
+									{
+										setBackground(Color.BLACK);
+										moreDying = true;
+										update();
+									}
+									Thread.sleep(2000);
+									deadPop += 35; 
+								}
 							}
 						}
+
 					}
 				}
 			} catch (InterruptedException e) {

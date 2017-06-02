@@ -1,4 +1,5 @@
 package main;
+import Jimmy.Sleeper;
 import Tracey.TransmissionsScreen;
 import guiTeacher.GUIApplication;
 
@@ -11,6 +12,8 @@ public class PlagueS extends GUIApplication {
 	/**
 	 * 
 	 */
+	static Sleeper date = new Sleeper();
+	
 	public PlagueS() {
 		super(1200,900);
 		setVisible(true);
@@ -27,6 +30,8 @@ public class PlagueS extends GUIApplication {
 		game = new PlagueS();
 		Thread app = new Thread(game);
 		app.start();
+		
+		date.run();
 	}
 	/* (non-Javadoc)
 	 * @see guiPractice.GuiApplication#initScreen()

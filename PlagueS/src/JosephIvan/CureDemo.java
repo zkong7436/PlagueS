@@ -4,7 +4,7 @@ import Jimmy.Sleeper;
 
 public class CureDemo extends guiTeacher.GUIApplication{
 
-
+	static Sleeper date = new Sleeper();
 
 	public CureDemo(int width, int height) {
 		super(1000,1000);
@@ -23,7 +23,6 @@ public class CureDemo extends guiTeacher.GUIApplication{
 		
 		Thread app = new Thread(D);
 		app.start();
-		Sleeper date = new Sleeper();
 		date.run();
 		
 	
