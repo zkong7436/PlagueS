@@ -5,7 +5,7 @@ import Wendy.State;
 public class Cure {
 	
 	private int curePercentage= 0;
-	private double infectedPercentage = 0;
+	private double infectedPercentage = main.MainScreen.getWorldInfected() / main.MainScreen.getWorldPop();
 	private double popDeadPercentage;
 	
 	public boolean activate = false;

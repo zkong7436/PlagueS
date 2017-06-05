@@ -29,7 +29,9 @@ public class MainScreen extends FullFunctionScreen{
 	private static ArrayList<State> butts;
 	private static int DNA;
 	private Thread check;
-	private int worldPop;
+	private static int worldPop = 1;
+	private static int worldInfected;
+	private TextLabel dd;
 
 	private boolean infectionStarted;
 
@@ -44,7 +46,7 @@ public class MainScreen extends FullFunctionScreen{
 					update();
 					if (state != null) addStatsBar(state);
 					try {
-						Thread.sleep(30);
+						Thread.sleep(50);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -67,7 +69,7 @@ public class MainScreen extends FullFunctionScreen{
 		fillInButtons();
 		viewObjects.addAll(butts);
 		//width = 55 height = 110
-		getWorldPop();
+		getWorld();
 		
 		Button welcome = new Button(getWidth()/6, getHeight()/3,900,100,"Welcome to PlagueS! \n You are a new Bacteria. To win, you must evolve and spread across the country - wiping out all humans in the Plague",Color.red,null);
 		welcome.setAction(new Action(){
@@ -82,7 +84,7 @@ public class MainScreen extends FullFunctionScreen{
 					public void run() {
 						// TODO Auto-generated method stub
 						
-						welcome.setText("Click a state to begin");//dont know why text dont change before sleeping
+						welcome.setText("Click a state to begin");
 						try {
 							Thread.sleep(1000);
 							remove(welcome);
@@ -142,23 +144,72 @@ public class MainScreen extends FullFunctionScreen{
 				if(infectionStarted)
 				{
 					System.out.println("infection started");
-					TextLabel dd = new TextLabel(800, 50, 1000, 40, "Day " + PlagueS.date.days + " Month " + PlagueS.date.months[PlagueS.date.month] + " Year " + PlagueS.date.year);
+					dd = new TextLabel(800, 50, 1000, 40, "Day " + PlagueS.date.days + " Month " + PlagueS.date.months[PlagueS.date.month] + " Year " + PlagueS.date.year);
 					PlagueS.date.setDisplay(dd);
 					viewObjects.add(dd);
 					startingDNA(viewObjects);
+					endGame(viewObjects);
 				}
+			}
+
+			private void endGame(List<Visible> viewObjects) {
+				// TODO Auto-generated method stub
+				Thread checkEnd = new Thread(new Runnable(){
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						boolean endGame = true;
+						for(int i = 0; i< butts.size(); i++)
+						{
+							if(!butts.get(i).isDestroyed())
+							{
+								endGame = false;
+							}
+						}
+						if(endGame)
+						{
+							PlagueS.date.setGameOn(false);
+							Button end =  new Button(getWidth()/6, getHeight()/3,900,100,"COngratz, " + PlagueS.Iscreen.getbName() + " has exterminated humanity",Color.black,null);
+							end.setForeground(Color.white);
+							end.setAction(new Action(){
+
+								@Override
+								public void act() {
+									// TODO Auto-generated method stub
+									remove(welcome);
+								}
+								
+							});
+						}
+						
+					}
+					
+				});
+				checkEnd.start();
 			}
 			
 		});	
 	}
 	
-	private void getWorldPop() {
+	private void getWorld() {
 		// TODO Auto-generated method stub
 		
 		for(int i = 0; i< butts.size(); i++)
 		{
 			worldPop += butts.get(i).getPopulation();
+			worldInfected += butts.get(i).getInfectedPop();
 		}
+	}
+
+
+	public static int getWorldPop() {
+		return worldPop;
+	}
+
+
+	public static int getWorldInfected() {
+		return worldInfected;
 	}
 
 

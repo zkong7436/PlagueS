@@ -144,7 +144,7 @@ public class State extends Button implements Runnable{
 				int randomTime = 1000*(int)(Math.random() * 4);
 				System.out.println("THE INFECTION IS NOW SPREADING");
 				rateOfInfection = rateOfInfection + transmission;
-				if(infectedPop + rateOfInfection >= population)
+				if(infectedPop + rateOfInfection >= population && infecting)
 				{
 					infectedPop = population - deadPop;
 					infecting = false;
@@ -168,8 +168,8 @@ public class State extends Button implements Runnable{
 						System.out.println("INFECTION IS NOW SPREADING TO OTHER STATE");
 						int ran = (int) (Math.random() * adStates.size());
 						adStates.get(ran).infect();	
-						adStates.remove(ran);
 						spread--;
+						adStates.remove(ran);
 					}
 					if(!sixty)
 					{
@@ -215,6 +215,13 @@ public class State extends Button implements Runnable{
 										setBackground(Color.BLACK);
 										moreDying = true;
 										update();
+										if(deadPop >= population)
+										{
+											deadPop = population;
+											infectedPop = 0;
+											destroyed = true;
+											setInfected(false);
+										}
 									}
 									Thread.sleep(2000);
 									deadPop += 35; 

@@ -25,6 +25,14 @@ public class Sleeper implements Runnable {
 			this.display = display;
 		}
 
+		public boolean isGameOn() {
+			return gameOn;
+		}
+
+		public void setGameOn(boolean gameOn) {
+			this.gameOn = gameOn;
+		}
+
 		public static void main(String[] args) {
 			Thread one = new Thread(new Sleeper());
 			one.start();
