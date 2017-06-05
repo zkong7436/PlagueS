@@ -3,6 +3,7 @@
  */
 package Tracey;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,6 +34,7 @@ public class TransmissionsScreen extends Upgrades {
 		tools = new ArrayList<ClickableGraphic>();
 		
 		TextLabel description = new TextLabel(400,180,100,500,"Bird1");
+		description.setCustomTextColor(Color.white);
 		
 		ClickableGraphic sample = new ClickableGraphic(10, 180, "Images/trans/Bird1_transmission.png");
 		

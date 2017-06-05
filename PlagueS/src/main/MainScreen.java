@@ -110,7 +110,7 @@ public class MainScreen extends FullFunctionScreen{
 		Button infection = new Button(50,750, 100, 100, "Infection", new Action(){
 			@Override
 			public void act(){
-				
+				PlagueS.game.setScreen(PlagueS.game.Dscreen);
 			}
 		});
 		

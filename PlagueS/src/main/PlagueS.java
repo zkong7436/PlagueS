@@ -1,5 +1,6 @@
 package main;
 import Jimmy.Sleeper;
+import Tracey.DiseaseScreen;
 import Tracey.TransmissionsScreen;
 import guiTeacher.GUIApplication;
 
@@ -23,8 +24,9 @@ public class PlagueS extends GUIApplication {
 	public static PlagueS game;
 	public static IntroScreen Iscreen;
 	public static MainScreen Mscreen;
+	public static DiseaseScreen Dscreen;
 	
-	public static TransmissionsScreen test;
+	public static TransmissionsScreen Tscreen;
 	
 	public static void main(String[] args){
 		game = new PlagueS();
@@ -41,7 +43,8 @@ public class PlagueS extends GUIApplication {
 		// TODO Auto-generated method stub
 		Iscreen = new IntroScreen(getWidth(),getHeight());
 		Mscreen = new MainScreen(getWidth(), getHeight());
-		//test = new TransmissionsScreen(getWidth(), getHeight());
+		Dscreen = new DiseaseScreen(getWidth(), getHeight());
+		Tscreen = new TransmissionsScreen(getWidth(), getHeight());
 		setScreen(Iscreen);
 	}
 

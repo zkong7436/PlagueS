@@ -17,9 +17,6 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 
 	public static Graphic background;
 	public static ArrayList<UpgradeButton> buttons;
-	public static UpgradeButton tran;
-	public static UpgradeButton symp;
-	public static UpgradeButton abil;
 	
 	public Upgrades(int width, int height) {
 		super(width, height);
@@ -27,39 +24,50 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 	} 
  
 	public void initAllObjects(List<Visible> viewObjects) {
-		background = new Graphic(0,80, 0.65,"Images/back.jpg");
+		background = new Graphic(0,80, 0.65,"Images/back.png");
 		buttons = new ArrayList<UpgradeButton>();
 		
-		tran = new UpgradeButton(0, 80, 200, 60, "Transmission", Color.white, new Action(){
+		UpgradeButton dise = new UpgradeButton(0, 80, 200, 60, "Disease", Color.white, new Action(){
 
 			@Override
 			public void act() {
-				main.PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
+				main.PlagueS.game.setScreen(main.PlagueS.game.Dscreen);
 				
 			}
 			
 		});
-		symp = new UpgradeButton(200, 80, 200, 60, "Symptoms", Color.white, new Action(){
+		UpgradeButton tran = new UpgradeButton(200, 80, 200, 60, "Transmission", Color.white, new Action(){
 
 			@Override
 			public void act() {
-				main.PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
+				main.PlagueS.game.setScreen(main.PlagueS.game.Tscreen);
+				
 			}
 			
 		});
-		abil = new UpgradeButton(400, 80, 200, 60, "Abilities", Color.white, new Action(){
+		UpgradeButton symp = new UpgradeButton(400, 80, 200, 60, "Symptoms", Color.white, new Action(){
 
 			@Override
 			public void act() {
-				main.PlagueS.game.setScreen(new TransmissionsScreen(getWidth(), getHeight()));
+				main.PlagueS.game.setScreen(main.PlagueS.game.Tscreen);
+			}
+			
+		});
+		UpgradeButton abil = new UpgradeButton(600, 80, 200, 60, "Abilities", Color.white, new Action(){
+
+			@Override
+			public void act() {
+				main.PlagueS.game.setScreen(main.PlagueS.game.Tscreen);
 			}
 			
 		}); 
 		
+		dise.setSize(20);
 		tran.setSize(20);
 		symp.setSize(20);
 		abil.setSize(20);
 		
+		buttons.add(dise);
 		buttons.add(tran);
 		buttons.add(symp);
 		buttons.add(abil);
