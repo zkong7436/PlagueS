@@ -5,13 +5,15 @@ import Wendy.State;
 public class Cure {
 	
 	private int curePercentage= 0;
-	private double infectedPercentage = main.MainScreen.getWorldInfected() / main.MainScreen.getWorldPop();
+	private double infectedPercentage = 0;
 	private double popDeadPercentage;
 	
 	public boolean activate = false;
 	private int counter = 0;	
 	private int counter2 = 0;
 	private int counter3 = 0;
+	private int counter4 = 0;
+	private int counter5 = 0;
 	private boolean win = true;
 	public Cure() {
 		
@@ -26,31 +28,46 @@ public class Cure {
 		//while every second passes
 		//infected = State.getInfectedpop
 		
-		if(infectedPercentage == 0) {
-			System.out.println("The diseased has been erased from this world. You have lost");
-			win = false;
-		}
+//		if(infectedPercentage == 0 && counter4 == 1) {
+//			System.out.println("The diseased has been erased from this world. You have lost");
+//			win = false;
+//		}
 		if (curePercentage < 100 && counter < 1) {
-			if(infectedPercentage >= 20) {
-				System.out.println("cure has started");
+			
+			if(infectedPercentage > 10) {
+			
+				if(counter5 < 1) {
+					System.out.println("cure has started");
+					counter5++;
+				}
+				
 				if(infectedPercentage == 100) {
 					cureBase(5);
+					infectionBase(5);
 				}else if (infectedPercentage >= 60){
 					cureBase(10);
+					infectionBase(10);
 				}else{
 					cureBase(20);
+					infectionBase(20);
 				}
 				
 					
 			}
-			if(infectedPercentage >= 10 && counter2 < 1){
-				System.out.println("A new disease is discovered in the us");
-				counter2++;
+			
+			else if(infectedPercentage >= 0 && infectedPercentage <= 10){
 				
-			}
-			else if(infectedPercentage >= 0 && infectedPercentage < 10){
-				System.out.println("Currently the percentage of the infected population is " + infectedPercentage);
-				infectedPercentage++;
+				if (infectedPercentage == 10) {
+					if (counter2 < 1) {
+						System.out.println("A new disease is discovered in the us");
+						counter2++;
+					}
+					
+					infectionBase(30);
+				}else {
+					infectionBase(30);
+				}
+				
 			}
 			
 		}else{
@@ -66,6 +83,7 @@ public class Cure {
 		}
 			
 	}
+	
 	
 	
 	public void makingCure(int rate){
@@ -96,28 +114,37 @@ public class Cure {
 		
 	}
 	
+	public void infectionBase(int base) {
+		if(Sleeper.ten % base == 0 ){
+			if(infectedPercentage < 100) {
+				infectedPercentage++;
+			}
+		}
+		System.out.println("Infected percentage is " + infectedPercentage + "%");
+	}
+	
 	public void cureBase(int base) {
 		if(Sleeper.ten % base == 0 ){
 	
 		curePercentage++;
 
-		System.out.println("cure is " + curePercentage + "% completed");
-		System.out.println("Infected percentage is " + infectedPercentage + "%");
 		
-		if(infectedPercentage < 100) {
-			infectedPercentage++;
-		}
 		
+		
+		
+
 
 		makingCure(base);
 	 
 		}
+		System.out.println("cure is " + curePercentage + "% completed");
 	}	
 	
 	public void spreadCure(int base){
 		if(Sleeper.ten % base == 0 ){
 			infectedPercentage--;
-			System.out.println(infectedPercentage + "% infected :(");		 
+			System.out.println(infectedPercentage + "% infected :(");
+			
 		}		
 	}
 }
