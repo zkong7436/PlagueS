@@ -227,41 +227,44 @@ public class MainScreen extends FullFunctionScreen{
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					try {
-						System.out.println("Thread running");
-						int randTime = 1000 * (int) (Math.random() * 5 + 1);
-						if(findInfected() != null)
-						{
-							State randomInfectedState = findInfected();
-							ClickableGraphic clickMe = new ClickableGraphic(randomInfectedState.getX()+10, randomInfectedState.getY()+10, 1.0, "Images/dnaPoints.png");
-							randomInfectedState.setEnabled(false);
-							System.out.println("Balloon being created");
-							clickMe.setAction(new Action(){
-								
-								@Override
-								public void act() {
-									// TODO Auto-generated method stub
-									DNA = DNA + 5;
-									dnapoints.setText(DNA + " points");
-									System.out.println(""+DNA);
+					while(true)
+					{
+						try {
+							System.out.println("Thread running");
+							int randTime = 1000 * (int) (Math.random() * 5 + 1);
+							if(findInfected() != null)
+							{
+								State randomInfectedState = findInfected();
+								ClickableGraphic clickMe = new ClickableGraphic(randomInfectedState.getX()+10, randomInfectedState.getY()+10, 1.0, "Images/dnaPoints.png");
+								randomInfectedState.setEnabled(false);
+								System.out.println("Balloon being created");
+								clickMe.setAction(new Action(){
+									
+									@Override
+									public void act() {
+										// TODO Auto-generated method stub
+										DNA = DNA + 5;
+										dnapoints.setText(DNA + " points");
+										System.out.println(""+DNA);
+										randomInfectedState.setEnabled(true);
+										remove(clickMe);
+									}
+									
+								});
+								addObject(clickMe);
+								Thread.sleep(2500);
+								if(viewObjects.contains(clickMe))
+								{
 									randomInfectedState.setEnabled(true);
 									remove(clickMe);
 								}
-								
-							});
-							addObject(clickMe);
-							Thread.sleep(2500);
-							if(viewObjects.contains(clickMe))
-							{
-								randomInfectedState.setEnabled(true);
-								remove(clickMe);
 							}
-						}
-						Thread.sleep(randTime);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}				
+							Thread.sleep(randTime);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}				
+					}
 				}
 			});
 			addPoints.start();
