@@ -156,12 +156,6 @@ public class State extends Button implements Runnable{
 				System.out.println("" + infectedPop);
 				if(infectedPop >= population * 0.4 & !forty)
 				{
-					setBackground(Color.pink);
-					forty = true;		
-					update();
-				}
-				else if(infectedPop >= population * 0.6)
-				{
 					int spread = (int)(Math.random() * 2 +1);
 					while(adStates.size() > 0 && spread > 0 )
 					{
@@ -171,9 +165,14 @@ public class State extends Button implements Runnable{
 						spread--;
 						adStates.remove(ran);
 					}
+					setBackground(Color.pink);
+					forty = true;		
+					update();
+				}
+				else if(infectedPop >= population * 0.6)
+				{
 					if(!sixty)
 					{
-						//setBackground(new Color(255, 204, 204));
 						setBackground(new Color(240,128,128));
 						sixty = true;		
 						update();
@@ -193,9 +192,9 @@ public class State extends Button implements Runnable{
 								ninty = true;
 								update();
 							}
-							System.out.println("People are now dying" + deadPop);
 							Thread.sleep(8000);
-							deadPop+= 25;
+							if(deadPop < population)
+							deadPop+= 40;
 							if(deadPop > population * 0.3 )
 							{
 								if(!dying)
@@ -205,7 +204,8 @@ public class State extends Button implements Runnable{
 									update();
 								}
 								Thread.sleep(4000);
-								deadPop+= 30;
+								if(deadPop < population)
+								deadPop+= 60;
 							}
 							else{
 								if(deadPop > population * 0.65)
@@ -224,7 +224,8 @@ public class State extends Button implements Runnable{
 										setInfected(false);
 									}						
 									Thread.sleep(2000);
-									deadPop += 35; 
+									if(deadPop < population)
+									deadPop += 80; 
 								}
 							}
 						}

@@ -45,16 +45,13 @@ public class MainScreen extends FullFunctionScreen{
 				{
 					update();
 					if (state != null) addStatsBar(state);
-					
 					try {
-						Thread.sleep(50);
+						Thread.sleep(100);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					};
-					
 				}
-				
 			}
 		});
 		update.start();
