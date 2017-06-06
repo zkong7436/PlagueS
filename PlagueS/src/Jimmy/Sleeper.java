@@ -19,6 +19,7 @@ public class Sleeper implements Runnable {
 		private State state;
 		public static int ten;
 		private TextLabel display;
+		private int count;
 		
 
 		public void setDisplay(TextLabel display) {
@@ -49,6 +50,7 @@ public class Sleeper implements Runnable {
 				while(gameOn){
 					Thread.sleep(second);
 					days++;
+					count++;
 					dayYear++;
 					ten++;
 						if(daysPerMonth[month] < days){
@@ -71,6 +73,10 @@ public class Sleeper implements Runnable {
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
+		}
+
+		public int getCount() {
+			return count;
 		}
 		
 }

@@ -45,6 +45,7 @@ public class MainScreen extends FullFunctionScreen{
 				{
 					update();
 					if (state != null) addStatsBar(state);
+					
 					try {
 						Thread.sleep(50);
 					} catch (InterruptedException e) {
@@ -143,7 +144,7 @@ public class MainScreen extends FullFunctionScreen{
 				System.out.println("running");
 				if(infectionStarted)
 				{
-					System.out.println("infection started");
+					//System.out.println("infection started");
 					dd = new TextLabel(800, 50, 1000, 40, "Day " + PlagueS.date.days + " Month " + PlagueS.date.months[PlagueS.date.month] + " Year " + PlagueS.date.year);
 					PlagueS.date.setDisplay(dd);
 					viewObjects.add(dd);
@@ -177,8 +178,18 @@ public class MainScreen extends FullFunctionScreen{
 								@Override
 								public void act() {
 									// TODO Auto-generated method stub
-									remove(welcome);
-								}
+									end.setText(PlagueS.Iscreen.getbName() + " has ended humanity in " + PlagueS.date.getCount() + " days");
+									try {
+										Thread.sleep(1000);
+										remove(end);
+										for(int i = 0; i< butts.size(); i++)
+										{
+											butts.get(i).setEnabled(false);
+										}
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}								}
 								
 							});
 						}
@@ -253,34 +264,31 @@ public class MainScreen extends FullFunctionScreen{
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-					}
-					
+					}				
 				}
-
-				private State findInfected() {
-					// TODO Auto-generated method stub
-					ArrayList<State> infected = new ArrayList<State>();
-					for(int i = 0; i<butts.size();i++)
-					{
-						if(butts.get(i).isInfected())
-						{
-							infected.add(butts.get(i));
-						}
-					}
-					if(infected.size() > 0)
-					{
-						int rand = (int) (Math.random() * infected.size());
-						return infected.get(rand);						
-					}
-					else
-						return null;
-				}
-				
 			});
 			addPoints.start();
 			
 	}
 	
+	private State findInfected() {
+		// TODO Auto-generated method stub
+		ArrayList<State> infected = new ArrayList<State>();
+		for(int i = 0; i<butts.size();i++)
+		{
+			if(butts.get(i).isInfected())
+			{
+				infected.add(butts.get(i));
+			}
+		}
+		if(infected.size() > 0)
+		{
+			int rand = (int) (Math.random() * infected.size());
+			return infected.get(rand);						
+		}
+		else
+			return null;
+	}
 	private void addStatsBar(State s) {
 		// TODO Auto-generated method stub
 		if(s==null)

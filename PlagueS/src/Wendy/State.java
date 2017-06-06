@@ -29,7 +29,7 @@ public class State extends Button implements Runnable{
 	private boolean sixty;
 	private boolean eighty;
 	private boolean ninty;
-	private boolean infecting;
+	private boolean infecting = true;
 	private boolean dying;
 	private boolean moreDying;
 	
@@ -144,13 +144,13 @@ public class State extends Button implements Runnable{
 				int randomTime = 1000*(int)(Math.random() * 4);
 				System.out.println("THE INFECTION IS NOW SPREADING");
 				rateOfInfection = rateOfInfection + transmission;
-				if(infectedPop + rateOfInfection >= population && infecting)
+				if(infectedPop + rateOfInfection < population && infecting)
 				{
-					infectedPop = population - deadPop;
-					infecting = false;
+					infectedPop = (int) (rateOfInfection + infectedPop);
 				}
 				else{					
-					infectedPop = (int) (rateOfInfection + infectedPop);
+					infectedPop = population - deadPop;
+					infecting = false;
 				}
 				Thread.sleep(randomTime);
 				System.out.println("" + infectedPop);
@@ -163,7 +163,7 @@ public class State extends Button implements Runnable{
 				else if(infectedPop >= population * 0.6)
 				{
 					int spread = (int)(Math.random() * 2 +1);
-					while(spread > 0 && adStates.size() > 0)
+					while(adStates.size() > 0 && spread > 0 )
 					{
 						System.out.println("INFECTION IS NOW SPREADING TO OTHER STATE");
 						int ran = (int) (Math.random() * adStates.size());
@@ -208,21 +208,21 @@ public class State extends Button implements Runnable{
 								deadPop+= 30;
 							}
 							else{
-								if(deadPop > population * 0.6)
+								if(deadPop > population * 0.65)
 								{
 									if(!moreDying)
 									{
 										setBackground(Color.BLACK);
 										moreDying = true;
 										update();
-										if(deadPop >= population)
-										{
-											deadPop = population;
-											infectedPop = 0;
-											destroyed = true;
-											setInfected(false);
-										}
 									}
+									if(deadPop >= population)
+									{
+										deadPop = population;
+										infectedPop = 0;
+										destroyed = true;
+										setInfected(false);
+									}						
 									Thread.sleep(2000);
 									deadPop += 35; 
 								}

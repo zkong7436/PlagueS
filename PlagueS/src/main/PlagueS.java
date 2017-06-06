@@ -25,7 +25,7 @@ public class PlagueS extends GUIApplication {
 	public static IntroScreen Iscreen;
 	public static MainScreen Mscreen;
 	public static DiseaseScreen Dscreen;
-	
+	 
 	public static TransmissionsScreen Tscreen;
 	
 	public static void main(String[] args){
@@ -44,7 +44,7 @@ public class PlagueS extends GUIApplication {
 		Iscreen = new IntroScreen(getWidth(),getHeight());
 		Mscreen = new MainScreen(getWidth(), getHeight());
 		Dscreen = new DiseaseScreen(getWidth(), getHeight());
-		Tscreen = new TransmissionsScreen(getWidth(), getHeight());
+		//Tscreen = new TransmissionsScreen(getWidth(), getHeight());
 		setScreen(Iscreen);
 	}
 
