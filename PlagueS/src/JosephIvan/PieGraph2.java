@@ -15,10 +15,14 @@ public class PieChart2 extends Component {
 
 	@Override
 	public void update(Graphics2D g) {
+		int x = main.MainScreen.getWorldInfected();
+		int y = main.MainScreen.getWorldPop();
 		g.setColor(Color.cyan);
 		g.fillOval(0, 0, getWidth(), getHeight());
-		g.setColor(Color.blue);
-		g.fillArc(0, 0, getWidth(), getHeight(), 0, (int)100*main.MainScreen.get); 
+		g.setColor(Color.red);
+		g.fillArc(0, 0, getWidth(), getHeight(), 0, 100*(x/y));
+		g.setColor(Color.gray);
+		g.fillArc(0, 0, getWidth(), getHeight(), 0, 50*(x/y));
 		
 		
 	}
