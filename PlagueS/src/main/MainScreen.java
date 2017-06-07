@@ -231,7 +231,7 @@ public class MainScreen extends FullFunctionScreen{
 					{
 						try {
 							System.out.println("Thread running");
-							int randTime = 1000 * (int) (Math.random() * 5 + 1);
+							int randTime = 1000 * (int) (Math.random() * 8 + 4);
 							if(findInfected() != null)
 							{
 								State randomInfectedState = findInfected();
@@ -252,7 +252,7 @@ public class MainScreen extends FullFunctionScreen{
 									
 								});
 								addObject(clickMe);
-								Thread.sleep(2500);
+								Thread.sleep(3500);
 								if(viewObjects.contains(clickMe))
 								{
 									randomInfectedState.setEnabled(true);

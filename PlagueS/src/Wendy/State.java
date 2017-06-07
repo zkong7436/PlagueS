@@ -23,7 +23,7 @@ public class State extends Button implements Runnable{
 	private  int notInfectedPop = population - infectedPop;
 	private double rateOfInfection;
 	//private double transmission = 1.18954723;
-	private double transmission = 8;
+	private double transmission = 3;
 	//private double percentInfected = (double)(infectedPop/population);
 	private boolean forty;
 	private boolean fifty;
@@ -32,6 +32,7 @@ public class State extends Button implements Runnable{
 	private boolean infecting = true;
 	private boolean dying;
 	private boolean moreDying;
+	private int deathRate;
 	
 	private final int POPULATION_US = getPopulation();
 	
@@ -160,7 +161,7 @@ public class State extends Button implements Runnable{
 					forty = true;		
 					update();
 				}
-				else if(infectedPop >= population * 0.5)
+				else if(infectedPop >= population * 0.45)
 				{
 					int spread = (int)(Math.random() * 2 +1);
 					while(adStates.size() > 0 && spread > 0 )
@@ -195,8 +196,8 @@ public class State extends Button implements Runnable{
 							}
 							System.out.println("People are now dying" + deadPop);
 							Thread.sleep(8000);
-							if(deadPop < population)
-							deadPop+= 30;
+							if(deadPop < population && deadPop + 20 < population)
+							deadPop+= 20;
 							if(deadPop > population * 0.3 && deadPop < population * 0.65)
 							{
 								if(!dying)
@@ -206,8 +207,8 @@ public class State extends Button implements Runnable{
 									update();
 								}
 								Thread.sleep(4000);
-								if(deadPop < population)
-								deadPop+= 40;
+								if(deadPop < population  && deadPop + 30 < population)
+								deadPop+= 30;
 							}
 							else{
 								if(deadPop > population * 0.65)
@@ -226,8 +227,8 @@ public class State extends Button implements Runnable{
 										setInfected(false);
 									}						
 									Thread.sleep(2000);
-									if(deadPop < population)
-									deadPop += 80; 
+									if(deadPop < population && deadPop + 70 < population )
+									deadPop += 70; 
 								}
 							}
 						}
