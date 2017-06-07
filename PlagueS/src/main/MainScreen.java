@@ -235,7 +235,7 @@ public class MainScreen extends FullFunctionScreen{
 							if(findInfected() != null)
 							{
 								State randomInfectedState = findInfected();
-								ClickableGraphic clickMe = new ClickableGraphic(randomInfectedState.getX()+10, randomInfectedState.getY()+10, 1.0, "Images/dnaPoints.png");
+								ClickableGraphic clickMe = new ClickableGraphic(randomInfectedState.getX()+10, randomInfectedState.getY()+10, 1.0, "Images/dnapoints.png");
 								randomInfectedState.setEnabled(false);
 								System.out.println("Balloon being created");
 								clickMe.setAction(new Action(){

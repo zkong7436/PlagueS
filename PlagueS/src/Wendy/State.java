@@ -26,7 +26,7 @@ public class State extends Button implements Runnable{
 	private double transmission = 8;
 	//private double percentInfected = (double)(infectedPop/population);
 	private boolean forty;
-	private boolean sixty;
+	private boolean fifty;
 	private boolean eighty;
 	private boolean ninty;
 	private boolean infecting = true;
@@ -160,7 +160,7 @@ public class State extends Button implements Runnable{
 					forty = true;		
 					update();
 				}
-				else if(infectedPop >= population * 0.6)
+				else if(infectedPop >= population * 0.5)
 				{
 					int spread = (int)(Math.random() * 2 +1);
 					while(adStates.size() > 0 && spread > 0 )
@@ -171,11 +171,11 @@ public class State extends Button implements Runnable{
 						spread--;
 						adStates.remove(ran);
 					}
-					if(!sixty)
+					if(!fifty)
 					{
 						//setBackground(new Color(255, 204, 204));
 						setBackground(new Color(240,128,128));
-						sixty = true;		
+						fifty = true;		
 						update();
 					}
 					else if(infectedPop >= population * 0.8)
