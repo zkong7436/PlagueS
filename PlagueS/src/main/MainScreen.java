@@ -146,8 +146,14 @@ public class MainScreen extends FullFunctionScreen{
 					PlagueS.date.setDisplay(dd);
 					viewObjects.add(dd);
 					startingDNA(viewObjects);
+					curing(viewObjects);
 					endGame(viewObjects);
 				}
+			}
+
+			private void curing(List<Visible> viewObjects) {
+				// TODO Auto-generated method stub
+				
 			}
 
 			private void endGame(List<Visible> viewObjects) {
@@ -157,40 +163,48 @@ public class MainScreen extends FullFunctionScreen{
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
-						boolean endGame = true;
-						for(int i = 0; i< butts.size(); i++)
-						{
-							if(!butts.get(i).isDestroyed())
+						while(true){
+							boolean endGame = true;
+							int count = 0;
+							for(int i = 0; i< butts.size(); i++)
 							{
-								endGame = false;
+								if(!butts.get(i).isDestroyed())
+								{
+									endGame = false;
+								}
+								else{
+									count++;
+								}
 							}
-						}
-						if(endGame)
-						{
-							PlagueS.date.setGameOn(false);
-							Button end =  new Button(getWidth()/6, getHeight()/3,900,100,"COngratz, " + PlagueS.Iscreen.getbName() + " has exterminated humanity",Color.black,null);
-							end.setForeground(Color.white);
-							end.setAction(new Action(){
+							if(endGame || (count > 0 && count < 4))
+							{
+								PlagueS.date.setGameOn(false);
+								Button end =  new Button(getWidth()/6, getHeight()/3,900,100,"COngratz, " + PlagueS.Iscreen.getbName() + " has exterminated humanity",Color.black,null);
+								end.setForeground(Color.white);
+								end.setAction(new Action(){
 
-								@Override
-								public void act() {
-									// TODO Auto-generated method stub
-									end.setText(PlagueS.Iscreen.getbName() + " has ended humanity in " + PlagueS.date.getCount() + " days");
-									try {
-										Thread.sleep(1000);
-										remove(end);
-										for(int i = 0; i< butts.size(); i++)
-										{
-											butts.get(i).setEnabled(false);
-										}
-									} catch (InterruptedException e) {
-										// TODO Auto-generated catch block
-										e.printStackTrace();
-									}								}
-								
-							});
+									@Override
+									public void act() {
+										// TODO Auto-generated method stub
+										end.setText(PlagueS.Iscreen.getbName() + " has ended humanity in " + PlagueS.date.getCount() + " days");
+										try {
+											for(int i = 0; i< butts.size(); i++)
+											{
+												butts.get(i).setEnabled(false);
+											}
+											Thread.sleep(1000);
+											remove(end);
+										} catch (InterruptedException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}							
+									}
+									
+								});
+								viewObjects.add(end);
+							}
+							
 						}
-						
 					}
 					
 				});
@@ -276,7 +290,7 @@ public class MainScreen extends FullFunctionScreen{
 		ArrayList<State> infected = new ArrayList<State>();
 		for(int i = 0; i<butts.size();i++)
 		{
-			if(butts.get(i).isInfected())
+			if(butts.get(i).isInfected() && !butts.get(i).isDestroyed())
 			{
 				infected.add(butts.get(i));
 			}
