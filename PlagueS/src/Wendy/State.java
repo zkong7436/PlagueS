@@ -210,9 +210,7 @@ public class State extends Button implements Runnable{
 
 							if(deadPop < population && deadPop + deathRate + 20 < population)
 							deadPop+= deathRate + 20;
-							else
-								deadPop = population;
-							if(deadPop > population * 0.3 && deadPop < population * 0.75)
+							if(deadPop > population * 0.3 && deadPop < population * 0.65)
 							{
 								if(!dying)
 								{
@@ -224,11 +222,9 @@ public class State extends Button implements Runnable{
 
 								if(deadPop < population && deadPop + deathRate + 20 < population)
 								deadPop+= deathRate + 40;
-								else
-									deadPop = population;
 							}
 							else{
-								if(deadPop > population * 0.75)
+								if(deadPop > population * 0.65)
 								{
 									if(!moreDying)
 									{
@@ -247,8 +243,6 @@ public class State extends Button implements Runnable{
 
 									if(deadPop < population && deadPop + deathRate + 70 < population)
 									deadPop += deathRate + 70; 
-									else
-										deadPop = population;
 
 								}
 							}
