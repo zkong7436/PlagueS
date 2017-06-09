@@ -4,8 +4,8 @@ import Wendy.State;
 
 public class Cure {
 	
-	private int curePercentage= 0;
-	private double infectedPercentage = 0;
+	public static int curePercentage= 0;
+	public static double infectedPercentage = 11;
 	private double popDeadPercentage;
 	
 	public boolean activate = false;
