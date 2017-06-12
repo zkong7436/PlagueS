@@ -57,7 +57,7 @@ public class Cure {
 			
 			else if(infectedPercentage >= 0 && infectedPercentage <= 10){
 				
-				if (infectedPercentage == 10) {
+				if (infectedPercentage >= 10) {
 					if (counter2 < 1) {
 						System.out.println("A new disease is discovered in the us");
 						counter2++;
@@ -140,6 +140,10 @@ public class Cure {
 		System.out.println("cure is " + curePercentage + "% completed");
 	}	
 	
+	public static int getCurePercentage() {
+		return curePercentage;
+	}
+
 	public void spreadCure(int base){
 		if(Sleeper.ten % base == 0 ){
 			infectedPercentage--;

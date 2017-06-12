@@ -32,7 +32,7 @@ public class MainScreen extends FullFunctionScreen{
 	private static int worldPop = 1;
 	private static int worldInfected;
 	private TextLabel dd;
-
+	private boolean cureStarted;
 	private boolean infectionStarted;
 
 	public MainScreen(int width, int height) {
@@ -153,7 +153,62 @@ public class MainScreen extends FullFunctionScreen{
 
 			private void curing(List<Visible> viewObjects) {
 				// TODO Auto-generated method stub
-				
+				Thread cure = new Thread(new Runnable(){
+
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						while(true)
+						{
+							if(Jimmy.Cure.getCurePercentage() >0 && !cureStarted)
+							{
+								Button cureS = new Button(getWidth()/6, getHeight()/3,900,100,"Research for cure to " + PlagueS.Iscreen.getbName() + " has started",Color.black,null);
+								cureS.setAction(new Action(){
+									
+									@Override
+									public void act() {
+										// TODO Auto-generated method stub
+										try {
+											Thread.sleep(3000);
+											remove(cureS);
+										} catch (InterruptedException e) {
+											// TODO Auto-generated catch block
+											e.printStackTrace();
+										}
+									}
+									
+								});
+								addObject(cureS);
+								cureStarted = true;
+							}
+							if(cureStarted){
+								if(Jimmy.Cure.getCurePercentage() >= 10)
+								{
+									Button cure = new Button(getWidth()/6, getHeight()/3,900,100,"Research for cure to " + PlagueS.Iscreen.getbName() + " is at 10 percent",Color.black,null);
+									cure.setAction(new Action(){
+										
+										@Override
+										public void act() {
+											// TODO Auto-generated method stub
+											try {
+												Thread.sleep(3000);
+												remove(cure);
+											} catch (InterruptedException e) {
+												// TODO Auto-generated catch block
+												e.printStackTrace();
+											}
+										}
+										
+									});
+									addObject(cure);
+								}
+									
+							}
+						}
+						
+					}
+					
+				});
 			}
 
 			private void endGame(List<Visible> viewObjects) {
