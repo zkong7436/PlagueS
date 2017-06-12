@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import guiTeacher.components.Action;
 import Tracey.UpgradeGraphic;
@@ -25,7 +26,8 @@ public class TransmissionsScreen extends Upgrades {
 	 * @param height
 	 */
 	private ArrayList<UpgradeGraphic> tools;
-	private ArrayList<TextColoredLabel> descriptions;
+	private ArrayList views;
+	
 	
 	private int startY = 180;
 	private int j;
@@ -40,42 +42,37 @@ public class TransmissionsScreen extends Upgrades {
 	public void initItems(List<Visible> viewObjects) {
 		File[] resources = new File("Images/trans/").listFiles();
 		tools = new ArrayList<UpgradeGraphic>();
-		descriptions = new ArrayList<TextColoredLabel>();
+		views = new ArrayList();
 		
-		for(int i=0; i<resources.length; i++){
-			TextColoredLabel des = new TextColoredLabel(900,180,200,40,getTransmission(resources[i].getName()), Color.black, Color.white);
-			des.setCustomTextColor(Color.white);
+		String desc[] = {"Gives pathogen ability to travel on dust particles. Increase infectivity, especially in arid environments and plane transmission", 
+				"Birds become susceptible to infection. Avian carriers increase infectivity, land transmission and mutation",
+				"Gives organism ability to spread through blood to blood contact. Increases infectivity, especially in poor regions and mutation chance", 
+				"Insects susceptible to infection. Carrier insects increase infectivity, especially in hot climates and chance of mutation",
+				"Livestock susceptible to infection. Increase infectivity, especially in rural regions and mutation",
+				"Common flea susceptible to infection. Increase infectivity, especially in urban regions and mutation",
+				"Pathogen can survive outside the body in fresh, warm water. Increase infectivity, especially in humid environments and ship transmission"};
+		
+		
+		for(int j=0; j<resources.length; j++){
+			TextColoredLabel des = new TextColoredLabel(900,180,200,40,getTransmission(resources[j].getName()), Color.black, Color.white);
+			TextColoredLabel det = new TextColoredLabel(900,220,200,170,desc[j], Color.black, Color.white);
 			des.setSize(20);
-			descriptions.add(des);
-		}
-		
-		ph = 0;
-		for(j=0; j<resources.length; j++){
+			det.setSize(16);
 			UpgradeGraphic pic = new UpgradeGraphic(10, 180+(j*80), "Images/trans/" + resources[j].getName());
 			pic.setAction(new Action(){
 				public void act(){
+					viewObjects.removeAll(views);
 					pic.setClicked();
-					if(pic.getClicked()) viewObjects.add(descriptions.get(ph));
-					else viewObjects.remove(descriptions.get(ph));
-					ph++;
+					if(pic.getClicked()){
+						views.add(des);
+						views.add(det);
+						viewObjects.addAll(views);
+					}
 				}
 			});
 			tools.add(pic);
 		}
-//		TextColoredLabel description = new TextColoredLabel(900,180,200,40,getTransmission(resources[0].getName()), Color.black, Color.white);
-//		description.setCustomTextColor(Color.white);
-//		description.setSize(20);
-//		
-//		UpgradeGraphic sample = new UpgradeGraphic(10, 180, "Images/trans/Bird1_transmission.png");
-//		sample.setAction(new Action(){
-//			public void act(){
-//				sample.setClicked();
-//				if(sample.getClicked()) viewObjects.add(description);
-//				else viewObjects.remove(description);
-//			}
-//		});
-//		
-//		viewObjects.add(sample);
+
 		viewObjects.addAll(tools);
 	}
 	

@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import guiTeacher.components.Action;
+import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
@@ -60,12 +61,21 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 				main.PlagueS.game.setScreen(main.PlagueS.game.Tscreen);
 			}
 			
-		}); 
+		});
+		Button exit = new Button(1100, 80, 70, 70, "X", Color.white, new Action(){
+			
+			@Override
+			public void act() {
+				main.PlagueS.game.setScreen(main.PlagueS.game.Mscreen);
+			}
+		});
 		
 		dise.setSize(20);
 		tran.setSize(20);
 		symp.setSize(20);
 		abil.setSize(20);
+		
+		exit.setSize(25);
 		
 		buttons.add(dise);
 		buttons.add(tran);
@@ -73,6 +83,7 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 		buttons.add(abil);
 		viewObjects.add(background);
 		viewObjects.addAll(buttons);
+		viewObjects.add(exit);
 		initItems(viewObjects);
 	}
 	
