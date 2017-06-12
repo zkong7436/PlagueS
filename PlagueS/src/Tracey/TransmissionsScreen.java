@@ -7,6 +7,7 @@ import java.awt.Color;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import guiTeacher.components.Action;
 import Tracey.UpgradeGraphic;
@@ -25,13 +26,8 @@ public class TransmissionsScreen extends Upgrades {
 	 * @param height
 	 */
 	private ArrayList<UpgradeGraphic> tools;
-	private ArrayList<TextColoredLabel> descriptions;
-	private ArrayList<TextColoredLabel> details;
-	private ArrayList<UpgradeButton> upgrades;
+	private ArrayList views;
 	
-	//stats
-	
-	private int points[];
 	
 	private int startY = 180;
 	private int j;
@@ -46,8 +42,7 @@ public class TransmissionsScreen extends Upgrades {
 	public void initItems(List<Visible> viewObjects) {
 		File[] resources = new File("Images/trans/").listFiles();
 		tools = new ArrayList<UpgradeGraphic>();
-		descriptions = new ArrayList<TextColoredLabel>();
-		details = new ArrayList<TextColoredLabel>();
+		views = new ArrayList();
 		
 		String desc[] = {"Gives pathogen ability to travel on dust particles. Increase infectivity, especially in arid environments and plane transmission", 
 				"Birds become susceptible to infection. Avian carriers increase infectivity, land transmission and mutation",
@@ -57,35 +52,21 @@ public class TransmissionsScreen extends Upgrades {
 				"Common flea susceptible to infection. Increase infectivity, especially in urban regions and mutation",
 				"Pathogen can survive outside the body in fresh, warm water. Increase infectivity, especially in humid environments and ship transmission"};
 		
-		for(int i=0; i<resources.length; i++){
-			TextColoredLabel des = new TextColoredLabel(900,180,200,40,getTransmission(resources[i].getName()), Color.black, Color.white);
-			TextColoredLabel det = new TextColoredLabel(900,220,200,170,desc[i], Color.black, Color.white);
-			des.setCustomTextColor(Color.white);
-			des.setSize(20);
-			det.setCustomTextColor(Color.white);
-			det.setSize(16);
-			descriptions.add(des);
-			details.add(det);
-//			
-//			UpgradeButton up = new UpgradeButton(920, 300, 160, 40, "Evolve", Color.white, new Action(){
-//				
-//				public void act(){
-//					//dna-=
-//				}
-//			});
-		}
 		
-		for(j=0; j<resources.length; j++){
+		for(int j=0; j<resources.length; j++){
+			TextColoredLabel des = new TextColoredLabel(900,180,200,40,getTransmission(resources[j].getName()), Color.black, Color.white);
+			TextColoredLabel det = new TextColoredLabel(900,220,200,170,desc[j], Color.black, Color.white);
+			des.setSize(20);
+			det.setSize(16);
 			UpgradeGraphic pic = new UpgradeGraphic(10, 180+(j*80), "Images/trans/" + resources[j].getName());
 			pic.setAction(new Action(){
 				public void act(){
+					viewObjects.removeAll(views);
 					pic.setClicked();
 					if(pic.getClicked()){
-						viewObjects.add(descriptions.get(j));
-						viewObjects.add(details.get(j));
-					}else{
-						viewObjects.remove(descriptions.get(j));
-						viewObjects.remove(details.get(j));
+						views.add(des);
+						views.add(det);
+						viewObjects.addAll(views);
 					}
 				}
 			});
