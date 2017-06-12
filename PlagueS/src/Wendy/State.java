@@ -224,8 +224,12 @@ public class State extends Button implements Runnable{
 
 								if(deadPop < population && deadPop + deathRate + 20 < population)
 								deadPop+= deathRate + 40;
-								else
+								else{
 									deadPop = population;
+									infectedPop = 0;
+									destroyed = true;
+									setInfected(false);
+								}
 							}
 							else{
 								if(deadPop > population * 0.75)
@@ -236,19 +240,24 @@ public class State extends Button implements Runnable{
 										moreDying = true;
 										update();
 									}
-									if(deadPop >= population)
-									{
-										deadPop = population;
-										infectedPop = 0;
-										destroyed = true;
-										setInfected(false);
-									}						
+//									if(deadPop >= population)
+//									{
+//										deadPop = population;
+//										infectedPop = 0;
+//										destroyed = true;
+//										setInfected(false);
+//									}						
 									Thread.sleep(2000);
 
 									if(deadPop < population && deadPop + deathRate + 70 < population)
 									deadPop += deathRate + 70; 
 									else
+									{
 										deadPop = population;
+										infectedPop = 0;
+										destroyed = true;
+										setInfected(false);
+									}
 
 								}
 							}

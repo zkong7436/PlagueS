@@ -176,7 +176,7 @@ public class MainScreen extends FullFunctionScreen{
 									count++;
 								}
 							}
-							if(endGame || (count > 0 && count < 4))
+							if(endGame || count > 47)
 							{
 								PlagueS.date.setGameOn(false);
 								Button end =  new Button(getWidth()/6, getHeight()/3,900,100,"COngratz, " + PlagueS.Iscreen.getbName() + " has exterminated humanity",Color.black,null);
@@ -201,7 +201,7 @@ public class MainScreen extends FullFunctionScreen{
 									}
 									
 								});
-								viewObjects.add(end);
+								addObject(end);
 							}
 							
 						}
