@@ -58,7 +58,7 @@ public class TransmissionsScreen extends Upgrades {
 			TextColoredLabel det = new TextColoredLabel(900,220,200,170,desc[j], Color.black, Color.white);
 			des.setSize(20);
 			det.setSize(16);
-			UpgradeGraphic pic = new UpgradeGraphic(10, 180+(j*80), "Images/trans/" + resources[j].getName());
+			UpgradeGraphic pic = new UpgradeGraphic(50, 180+(j*80), "Images/trans/" + resources[j].getName());
 			pic.setAction(new Action(){
 				public void act(){
 					viewObjects.removeAll(views);

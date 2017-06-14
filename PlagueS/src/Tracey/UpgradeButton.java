@@ -40,7 +40,12 @@ public class UpgradeButton extends Button {
 	 * @param action
 	 */
 	
-
+	public void drawBorder(Graphics2D g){
+		g.setColor(Color.BLACK);
+		g.drawRect(0, 0, getWidth()-1, getHeight()-1);
+		
+	}
+	
 	protected void colorBackground(Graphics2D g, boolean hover){
 		if(getBackground() != null){
 			if(!hover)g.setColor(getBackground());
@@ -48,7 +53,7 @@ public class UpgradeButton extends Button {
 				g.setColor(Utilities.lighten(Color.red, .4f));
 //				g.setColor(getBackground());
 			}
-			g.fillRoundRect(0, 0, getWidth(), getHeight(), 35, 25);
+			g.fillRect(0, 0, getWidth(), getHeight());
 		}else{
 			clear();
 		}

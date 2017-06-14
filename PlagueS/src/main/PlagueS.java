@@ -45,7 +45,7 @@ public class PlagueS extends GUIApplication {
 		Mscreen = new MainScreen(getWidth(), getHeight());
 		Dscreen = new DiseaseScreen(getWidth(), getHeight());
 		Tscreen = new TransmissionsScreen(getWidth(), getHeight());
-		setScreen(Tscreen);
+		setScreen(Iscreen);
 	}
 
 }

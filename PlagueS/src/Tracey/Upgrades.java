@@ -28,7 +28,7 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 		background = new Graphic(0,80, 0.65,"Images/back.png");
 		buttons = new ArrayList<UpgradeButton>();
 		
-		UpgradeButton dise = new UpgradeButton(0, 80, 200, 60, "Disease", Color.white, new Action(){
+		UpgradeButton dise = new UpgradeButton(0, 80, 200, 60, "Disease", Color.gray, new Action(){
 
 			@Override
 			public void act() {
@@ -37,7 +37,7 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 			}
 			
 		});
-		UpgradeButton tran = new UpgradeButton(200, 80, 200, 60, "Transmission", Color.white, new Action(){
+		UpgradeButton tran = new UpgradeButton(200, 80, 200, 60, "Transmission", Color.gray, new Action(){
 
 			@Override
 			public void act() {
@@ -46,7 +46,7 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 			}
 			
 		});
-		UpgradeButton symp = new UpgradeButton(400, 80, 200, 60, "Symptoms", Color.white, new Action(){
+		UpgradeButton symp = new UpgradeButton(400, 80, 200, 60, "Symptoms", Color.gray, new Action(){
 
 			@Override
 			public void act() {
@@ -54,7 +54,7 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 			}
 			
 		});
-		UpgradeButton abil = new UpgradeButton(600, 80, 200, 60, "Abilities", Color.white, new Action(){
+		UpgradeButton abil = new UpgradeButton(600, 80, 200, 60, "Abilities", Color.gray, new Action(){
 
 			@Override
 			public void act() {
@@ -62,13 +62,15 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 			}
 			
 		});
-		Button exit = new Button(1100, 80, 70, 70, "X", Color.white, new Action(){
+		Button exit = new Button(1100, 80, 70, 70, "X", Color.gray, new Action(){
 			
 			@Override
 			public void act() {
 				main.PlagueS.game.setScreen(main.PlagueS.game.Mscreen);
 			}
 		});
+		
+		exit.setCurve(50,50);
 		
 		dise.setSize(20);
 		tran.setSize(20);

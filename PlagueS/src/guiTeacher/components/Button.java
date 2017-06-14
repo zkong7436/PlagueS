@@ -107,12 +107,17 @@ public class Button extends TextLabel implements Clickable{
 		}
 	}
 	
+	public void drawBorder(Graphics2D g){
+		g.setColor(Color.BLACK);
+		g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, curveX, curveY);
+		
+	}
+	
 	public void drawButton(Graphics2D g, boolean hover){
 		g.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
 				RenderingHints.VALUE_ANTIALIAS_ON);
 		colorBackground(g, hover);
-		g.setColor(Color.BLACK);
-		g.drawRoundRect(0, 0, getWidth()-1, getHeight()-1, curveX, curveY);
+		drawBorder(g);
 		g.setColor(getForeground());
 		g.setFont(getFont());
 		FontMetrics fm = g.getFontMetrics();
