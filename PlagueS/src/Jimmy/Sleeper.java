@@ -15,7 +15,8 @@ public class Sleeper implements Runnable {
 		private int[] daysPerMonth = {31,28,31,30,31,30,31,31,30,31,30,31};
 		public int year = 2017;
 		private int dayYear;
-		private Cure cure;
+		public Cure cure;
+
 		private State state;
 		public static int ten;
 		private TextLabel display;

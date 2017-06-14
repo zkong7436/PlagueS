@@ -1,14 +1,19 @@
 package Jimmy;
 
 import Wendy.State;
+import main.MainScreen;
 
 public class Cure {
 	
-	public static int curePercentage= 0;
-	public static double infectedPercentage = 11;
+	public  int curePercentage= 0;
+	public  double infectedPercentage = MainScreen.getWorldInfected()/MainScreen.getWorldPop();
 	private double popDeadPercentage;
 	
-	public boolean activate = false;
+	private boolean activate = false;
+	public boolean isActivate() {
+		return activate;
+	}
+
 	private int counter = 0;	
 	private int counter2 = 0;
 	private int counter3 = 0;
@@ -34,10 +39,11 @@ public class Cure {
 //		}
 		if (curePercentage < 100 && counter < 1) {
 			
-			if(infectedPercentage > 10) {
+			if(infectedPercentage >= 10) {
 			
 				if(counter5 < 1) {
 					System.out.println("cure has started");
+					activate = true;
 					counter5++;
 				}
 				
@@ -140,7 +146,7 @@ public class Cure {
 		System.out.println("cure is " + curePercentage + "% completed");
 	}	
 	
-	public static int getCurePercentage() {
+	public int getCurePercentage() {
 		return curePercentage;
 	}
 

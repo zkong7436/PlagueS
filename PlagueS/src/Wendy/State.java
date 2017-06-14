@@ -22,8 +22,7 @@ public class State extends Button implements Runnable{
 	private  int alivePop = population - deadPop;
 	private  int notInfectedPop = population - infectedPop;
 	private double rateOfInfection;
-	//private double transmission = 1.18954723;
-	private double transmission = 3;
+	private double transmission = 2.5;
 	//private double percentInfected = (double)(infectedPop/population);
 	private boolean twentyfive;
 	private boolean forty;
@@ -31,10 +30,12 @@ public class State extends Button implements Runnable{
 	private boolean eighty;
 	private boolean ninty;
 	private boolean infecting = true;
+	private boolean startDying;
 	private boolean dying;
 	private boolean moreDying;
+	private boolean dead;
 
-	private int deathRate = 10;
+	private int deathRate = 1;
 	
 	private final int POPULATION_US = getPopulation();
 	
@@ -136,7 +137,7 @@ public class State extends Button implements Runnable{
 		stateStart.start();
 		adStates = new ArrayList<State>();
 		findAdStates();
-		System.out.println("Finding ad states");
+		//System.out.println("Finding ad states");
 		//run();
 	}
 	
@@ -145,7 +146,7 @@ public class State extends Button implements Runnable{
 		{
 			try {
 				int randomTime = 1000*(int)(Math.random() * 4);
-				System.out.println("THE INFECTION IS NOW SPREADING");
+				//System.out.println("THE INFECTION IS NOW SPREADING");
 				rateOfInfection = rateOfInfection + transmission;
 				if(infectedPop + rateOfInfection < population && infecting)
 				{
@@ -154,35 +155,38 @@ public class State extends Button implements Runnable{
 				else{					
 					if(population - deadPop >= 0)
 					{
-						infectedPop = population - deadPop;
+						infectedPop = population;
 						infecting = false;						
 					}
 				}
 				Thread.sleep(randomTime);
-				System.out.println("" + infectedPop);
+				//System.out.println("" + infectedPop);
 				if(infectedPop >= population * 0.25 && !twentyfive && infectedPop < population * 0.4)
 				{
 					setBackground(new Color(255,204,204));
 					twentyfive = true;
 					update();
 				}
-				else if(infectedPop >= population * 0.4 && !forty)
+				else if(infectedPop >= population * 0.4 && infectedPop <= population * 0.5)
 				{
-					setBackground(Color.pink);
-					forty = true;		
-					update();
-				}
-				else if(infectedPop >= population * 0.45)
-				{
+					if(!forty)
+					{
+						setBackground(Color.pink);
+						forty = true;		
+						update();
+					}
 					int spread = (int)(Math.random() * 2 +1);
 					while(adStates.size() > 0 && spread > 0 )
 					{
-						System.out.println("INFECTION IS NOW SPREADING TO OTHER STATE");
+						//System.out.println("INFECTION IS NOW SPREADING TO OTHER STATE");
 						int ran = (int) (Math.random() * adStates.size());
 						adStates.get(ran).infect();	
 						spread--;
 						adStates.remove(ran);
 					}
+				}
+				else if(infectedPop >= population * 0.5)
+				{
 					if(!fifty)
 					{
 						//setBackground(new Color(255, 204, 204));
@@ -197,7 +201,7 @@ public class State extends Button implements Runnable{
 							setBackground(Color.red);
 							eighty =true;	
 							update();
-						}else if(infectedPop >= population * 0.9)
+						}else if(infectedPop >= population * 0.95)
 						{
 							if(!ninty)
 							{
@@ -205,11 +209,17 @@ public class State extends Button implements Runnable{
 								ninty = true;
 								update();
 							}
-							System.out.println("People are now dying" + deadPop);
+							//System.out.println("People are now dying" + deadPop);
 							Thread.sleep(8000);
 
 							if(deadPop < population && deadPop + deathRate + 20 < population)
 							deadPop+= deathRate + 20;
+							if(deadPop > 1 && !startDying)
+							{
+								setBackground(new Color(168,168,168));
+								startDying = true;
+								update();
+							}
 							if(deadPop > population * 0.3 && deadPop < population * 0.65)
 							{
 								if(!dying)
@@ -221,7 +231,7 @@ public class State extends Button implements Runnable{
 								Thread.sleep(4000);
 
 								if(deadPop < population && deadPop + deathRate + 20 < population)
-								deadPop+= deathRate + 40;
+								deadPop+= deathRate + 30;
 								else{
 									deadPop = population;
 									infectedPop = 0;
@@ -234,8 +244,14 @@ public class State extends Button implements Runnable{
 								{
 									if(!moreDying)
 									{
-										setBackground(Color.BLACK);
+										setBackground(new Color(88,88,88));
 										moreDying = true;
+										update();
+									}
+									if(deadPop >population * 0.9 && !dead)
+									{
+										setBackground(Color.BLACK);
+										dead = true;
 										update();
 									}
 //									if(deadPop >= population)
@@ -248,7 +264,7 @@ public class State extends Button implements Runnable{
 									Thread.sleep(2000);
 
 									if(deadPop < population && deadPop + deathRate + 70 < population)
-									deadPop += deathRate + 70; 
+									deadPop += deathRate + 40; 
 									else
 									{
 										deadPop = population;

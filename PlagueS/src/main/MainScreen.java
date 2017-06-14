@@ -34,6 +34,7 @@ public class MainScreen extends FullFunctionScreen{
 	private TextLabel dd;
 	private boolean cureStarted;
 	private boolean infectionStarted;
+	private boolean adding = true;
 
 	public MainScreen(int width, int height) {
 		super(width, height);
@@ -150,125 +151,128 @@ public class MainScreen extends FullFunctionScreen{
 					endGame(viewObjects);
 				}
 			}
+		});	
+	}
+	
+	private void curing(List<Visible> viewObjects) {
+		// TODO Auto-generated method stub
+		Thread cure = new Thread(new Runnable(){
 
-			private void curing(List<Visible> viewObjects) {
+			@Override
+			public void run() {
 				// TODO Auto-generated method stub
-				Thread cure = new Thread(new Runnable(){
-
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						while(true)
-						{
-							if(Jimmy.Cure.getCurePercentage() >0 && !cureStarted)
-							{
-								Button cureS = new Button(getWidth()/6, getHeight()/3,900,100,"Research for cure to " + PlagueS.Iscreen.getbName() + " has started",Color.black,null);
-								cureS.setAction(new Action(){
-									
-									@Override
-									public void act() {
-										// TODO Auto-generated method stub
-										try {
-											Thread.sleep(3000);
-											remove(cureS);
-										} catch (InterruptedException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}
-									}
-									
-								});
-								addObject(cureS);
-								cureStarted = true;
-							}
-							if(cureStarted){
-								if(Jimmy.Cure.getCurePercentage() >= 10)
-								{
-									Button cure = new Button(getWidth()/6, getHeight()/3,900,100,"Research for cure to " + PlagueS.Iscreen.getbName() + " is at 10 percent",Color.black,null);
-									cure.setAction(new Action(){
-										
-										@Override
-										public void act() {
-											// TODO Auto-generated method stub
-											try {
-												Thread.sleep(3000);
-												remove(cure);
-											} catch (InterruptedException e) {
-												// TODO Auto-generated catch block
-												e.printStackTrace();
-											}
-										}
-										
-									});
-									addObject(cure);
+				while(true)
+				{
+					if(PlagueS.date.cure.isActivate() && !cureStarted)
+					{
+						System.out.println("CRY MYSELF A RIVER");
+						Button cureS = new Button(getWidth()/6, getHeight()/3,900,100,"Research for cure to " + PlagueS.Iscreen.getbName() + " has started",Color.black,null);
+						cureS.setAction(new Action(){
+							
+							@Override
+							public void act() {
+								// TODO Auto-generated method stub
+								try {
+									Thread.sleep(3000);
+									remove(cureS);
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
 								}
-									
-							}
-						}
-						
-					}
-					
-				});
-			}
-
-			private void endGame(List<Visible> viewObjects) {
-				// TODO Auto-generated method stub
-				Thread checkEnd = new Thread(new Runnable(){
-
-					@Override
-					public void run() {
-						// TODO Auto-generated method stub
-						while(true){
-							boolean endGame = true;
-							int count = 0;
-							for(int i = 0; i< butts.size(); i++)
-							{
-								if(!butts.get(i).isDestroyed())
-								{
-									endGame = false;
-								}
-								else{
-									count++;
-								}
-							}
-
-							if(endGame || count > 47)
-
-							{
-								PlagueS.date.setGameOn(false);
-								Button end =  new Button(getWidth()/6, getHeight()/3,900,100,"COngratz, " + PlagueS.Iscreen.getbName() + " has exterminated humanity",Color.black,null);
-								end.setForeground(Color.white);
-								end.setAction(new Action(){
-
-									@Override
-									public void act() {
-										// TODO Auto-generated method stub
-										end.setText(PlagueS.Iscreen.getbName() + " has ended humanity in " + PlagueS.date.getCount() + " days");
-										try {
-											for(int i = 0; i< butts.size(); i++)
-											{
-												butts.get(i).setEnabled(false);
-											}
-											Thread.sleep(1000);
-											remove(end);
-										} catch (InterruptedException e) {
-											// TODO Auto-generated catch block
-											e.printStackTrace();
-										}							
-									}
-									
-								});
-								addObject(end);
 							}
 							
-						}
+						});
+						addObject(cureS);
+						cureStarted = true;
 					}
-					
-				});
-				checkEnd.start();
+					if(cureStarted){
+						if(PlagueS.date.cure.getCurePercentage() % 10 == 0 )
+						{
+							System.out.println(PlagueS.date.cure.getCurePercentage() + "%");
+							Button cureB = new Button(getWidth()/6, getHeight()/3,900,100,"Research for cure to " + PlagueS.Iscreen.getbName() + " is at "+ PlagueS.date.cure.getCurePercentage() + " percent",Color.black,null);
+							cureB.setAction(new Action(){
+								
+								@Override
+								public void act() {
+									// TODO Auto-generated method stub
+									try {
+										Thread.sleep(3000);
+										remove(cureB);
+									} catch (InterruptedException e) {
+										// TODO Auto-generated catch block
+										e.printStackTrace();
+									}
+								}
+								
+							});
+							addObject(cureB);
+						}
+							
+					}
+				}
+				
 			}
 			
-		});	
+		});
+		cure.start();
+	}
+	
+	private void endGame(List<Visible> viewObjects) {
+		// TODO Auto-generated method stub
+		Thread checkEnd = new Thread(new Runnable(){
+
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				while(true){
+					boolean endGame = true;
+					int count = 0;
+					for(int i = 0; i< butts.size(); i++)
+					{
+						if(!butts.get(i).isDestroyed())
+						{
+							endGame = false;
+						}
+						else{
+							count++;
+						}
+					}
+
+					if(endGame || count > 47)
+
+					{
+						PlagueS.date.setGameOn(false);
+						adding = false;
+						Button end =  new Button(getWidth()/6, getHeight()/3,900,100,"COngratz, " + PlagueS.Iscreen.getbName() + " has exterminated humanity",Color.black,null);
+						end.setForeground(Color.white);
+						end.setAction(new Action(){
+
+							@Override
+							public void act() {
+								// TODO Auto-generated method stub
+								end.setText(PlagueS.Iscreen.getbName() + " has ended humanity in " + PlagueS.date.getCount() + " days");
+								try {
+									for(int i = 0; i< butts.size(); i++)
+									{
+										butts.get(i).setEnabled(false);
+									}
+									Thread.sleep(1000);
+									remove(end);
+								} catch (InterruptedException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}							
+							}
+							
+						});
+						addObject(end);
+					}
+					
+				}
+			}
+			
+		});
+		checkEnd.start();
 	}
 	
 	private void getWorld() {
@@ -298,17 +302,17 @@ public class MainScreen extends FullFunctionScreen{
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					while(true)
+					while(true && adding)
 					{
 						try {
-							System.out.println("Thread running");
+							//System.out.println("Thread running");
 							int randTime = 1000 * (int) (Math.random() * 8 + 4);
 							if(findInfected() != null)
 							{
 								State randomInfectedState = findInfected();
 								ClickableGraphic clickMe = new ClickableGraphic(randomInfectedState.getX()+10, randomInfectedState.getY()+10, 1.0, "Images/dnapoints.png");
 								randomInfectedState.setEnabled(false);
-								System.out.println("Balloon being created");
+								//System.out.println("Balloon being created");
 								clickMe.setAction(new Action(){
 									
 									@Override
@@ -316,7 +320,7 @@ public class MainScreen extends FullFunctionScreen{
 										// TODO Auto-generated method stub
 										DNA = DNA + 5;
 										dnapoints.setText(DNA + " points");
-										System.out.println(""+DNA);
+										//System.out.println(""+DNA);
 										randomInfectedState.setEnabled(true);
 										remove(clickMe);
 									}
