@@ -47,10 +47,7 @@ public DemoScreen(int width, int height) {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		
-
-		
-		
+				
 		TextLabel Display = new TextLabel(20, 40, 1000, 40, "hjkhk");
 		Button Cure = new Button(100,100, 100, 100, "Cure", Color.blue, new Action(){
 
@@ -63,7 +60,7 @@ public DemoScreen(int width, int height) {
 			}		
 		}						
 				);
-		Button World = new Button(300,300, 100, 100, "World", Color.blue, new Action(){
+		Button World = new Button(500,500, 100, 100, "World", Color.blue, new Action(){
 
 			@Override
 			public void act() {
@@ -84,8 +81,6 @@ public DemoScreen(int width, int height) {
 			}
 		});
 	
-		TextLabel dd = new TextLabel(200, 400, 1000, 40, "Day " + CureDemo.date.days + " Month " + CureDemo.date.months[CureDemo.date.month] + " Year " + CureDemo.date.year);
-		CureDemo.date.setDisplay(dd);
 		//PieChart p = new PieChart(600,600);
 		Graphic background = new Graphic(0,0,1000,1000,"");
 		//Images/plague.jpg
@@ -93,7 +88,6 @@ public DemoScreen(int width, int height) {
 		viewObjects.add(Display);
 		viewObjects.add(Cure);
 		viewObjects.add(World);
-		viewObjects.add(dd);
 		viewObjects.add(exit);
 		
 		

@@ -38,10 +38,10 @@ private PieChart2 chart2;
 
 	@Override
 	public void update(Graphics2D g) {
-		chart = new PieChart(20,20);
-		chart2 = new PieChart2(200,200);
-		text = new TextLabel(0,0,300,40,"The Plague is starting to take over the world!");
-		text.setSize(35);
+		chart = new PieChart(20,80);
+		chart2 = new PieChart2(300,300);
+		text = new TextLabel(0,0,600,50,"The Plague is starting to take over the world!");
+		text.setSize(30);
 		if(chart!=null){
 			g.drawImage(text.getImage(), text.getX(),text.getY(),null);
 			g.drawImage(chart.getImage(), chart.getX(),chart.getY(),null);

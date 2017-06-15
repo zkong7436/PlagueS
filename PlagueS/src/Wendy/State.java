@@ -173,6 +173,7 @@ public class State extends Button implements Runnable{
 				if(infectedPop + rateOfInfection < population && infecting)
 				{
 					infectedPop = (int) (rateOfInfection + infectedPop);
+					System.out.println(""+transmission);
 				}
 				else{					
 					if(population - deadPop >= 0)
