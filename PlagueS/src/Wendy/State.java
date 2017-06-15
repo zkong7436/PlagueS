@@ -37,6 +37,25 @@ public class State extends Button implements Runnable{
 
 	private int deathRate = 1;
 	
+	public double getTransmission() {
+		return transmission;
+	}
+
+
+	public void setTransmission(double transmission) {
+		this.transmission = transmission;
+	}
+
+
+	public int getDeathRate() {
+		return deathRate;
+	}
+
+
+	public void setDeathRate(int deathRate) {
+		this.deathRate = deathRate;
+	}
+
 	private final int POPULATION_US = getPopulation();
 	
 	
