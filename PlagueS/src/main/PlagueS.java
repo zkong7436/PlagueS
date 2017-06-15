@@ -1,6 +1,7 @@
 package main;
 import Jimmy.Sleeper;
 import Tracey.DiseaseScreen;
+import Tracey.SymptomsScreen;
 import Tracey.TransmissionsScreen;
 import guiTeacher.GUIApplication;
 
@@ -25,6 +26,7 @@ public class PlagueS extends GUIApplication {
 	public static IntroScreen Iscreen;
 	public static MainScreen Mscreen;
 	public static DiseaseScreen Dscreen;
+	public static SymptomsScreen Sscreen;
 	 
 	public static TransmissionsScreen Tscreen;
 	
@@ -45,6 +47,7 @@ public class PlagueS extends GUIApplication {
 		Mscreen = new MainScreen(getWidth(), getHeight());
 		Dscreen = new DiseaseScreen(getWidth(), getHeight());
 		Tscreen = new TransmissionsScreen(getWidth(), getHeight());
+		Sscreen = new SymptomsScreen(getWidth(), getHeight());
 		setScreen(Iscreen);
 	}
 

@@ -50,7 +50,7 @@ public abstract class Upgrades extends FullFunctionScreen implements UpgradesInt
 
 			@Override
 			public void act() {
-				main.PlagueS.game.setScreen(main.PlagueS.game.Tscreen);
+				main.PlagueS.game.setScreen(main.PlagueS.game.Sscreen);
 			}
 			
 		});
