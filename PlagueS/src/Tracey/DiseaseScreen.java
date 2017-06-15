@@ -11,7 +11,7 @@ import guiTeacher.components.TextLabel;
 import guiTeacher.interfaces.Visible;
 
 /**
- * @author Wendigo
+ * @author zkong7436
  *
  */
 public class DiseaseScreen extends Upgrades {
