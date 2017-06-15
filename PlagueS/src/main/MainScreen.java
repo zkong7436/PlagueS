@@ -160,7 +160,7 @@ public class MainScreen extends FullFunctionScreen{
 	
 	public void setDNA(int pts){
 			DNA-=pts;
-			System.out.print("==================== new DNA points: "+DNA);
+			System.out.println("==================== new DNA points: "+DNA);
 	}
 	
 	private void curing(List<Visible> viewObjects) {

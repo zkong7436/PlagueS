@@ -27,7 +27,6 @@ public class PlagueS extends GUIApplication {
 	public static MainScreen Mscreen;
 	public static DiseaseScreen Dscreen;
 	public static SymptomsScreen Sscreen;
-	 
 	public static TransmissionsScreen Tscreen;
 	
 	public static void main(String[] args){
@@ -45,7 +44,7 @@ public class PlagueS extends GUIApplication {
 		// TODO Auto-generated method stub
 		Iscreen = new IntroScreen(getWidth(),getHeight());
 		Mscreen = new MainScreen(getWidth(), getHeight());
-		Dscreen = new DiseaseScreen(getWidth(), getHeight());
+		Dscreen = new DiseaseScreen(getWidth(),getHeight());
 		Tscreen = new TransmissionsScreen(getWidth(), getHeight());
 		Sscreen = new SymptomsScreen(getWidth(), getHeight());
 		setScreen(Iscreen);
