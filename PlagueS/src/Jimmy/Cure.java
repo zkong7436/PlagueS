@@ -5,7 +5,7 @@ import main.MainScreen;
 
 public class Cure {
 	
-	public  int curePercentage= 0;
+	public static  int curePercentage= 0;
 	public  double infectedPercentage = MainScreen.getWorldInfected()/MainScreen.getWorldPop();
 	private double popDeadPercentage;
 	

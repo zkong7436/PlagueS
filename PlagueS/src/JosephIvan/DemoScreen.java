@@ -76,6 +76,14 @@ public DemoScreen(int width, int height) {
 			
 		});
 		
+		Button exit = new Button(1100, 80, 70, 70, "X", Color.gray, new Action(){
+			
+			@Override
+			public void act() {
+				main.PlagueS.game.setScreen(main.PlagueS.game.Mscreen);
+			}
+		});
+	
 		TextLabel dd = new TextLabel(200, 400, 1000, 40, "Day " + CureDemo.date.days + " Month " + CureDemo.date.months[CureDemo.date.month] + " Year " + CureDemo.date.year);
 		CureDemo.date.setDisplay(dd);
 		//PieChart p = new PieChart(600,600);
@@ -86,6 +94,7 @@ public DemoScreen(int width, int height) {
 		viewObjects.add(Cure);
 		viewObjects.add(World);
 		viewObjects.add(dd);
+		viewObjects.add(exit);
 		
 		
 	}
