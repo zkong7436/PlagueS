@@ -68,6 +68,11 @@ public class State extends Button implements Runnable{
 		update();
 	}
 	
+	public void setTransmission(double up){
+		System.out.println("+++++++++initial transmission"+transmission);
+		transmission+=up;
+		System.out.println("+++++++++new transmission:"+transmission);
+	}
 	
 	public int getInfectedPop() {
 		return infectedPop;
