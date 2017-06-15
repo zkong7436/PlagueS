@@ -42,8 +42,10 @@ public class State extends Button implements Runnable{
 	}
 
 
-	public void setTransmission(double transmission) {
-		this.transmission = transmission;
+	public void setTransmission(double up) {
+		System.out.println("+++++++++initial transmission"+transmission);
+		transmission+=up;
+		System.out.println("+++++++++new transmission:"+transmission);
 	}
 
 
@@ -52,8 +54,10 @@ public class State extends Button implements Runnable{
 	}
 
 
-	public void setDeathRate(int deathRate) {
-		this.deathRate = deathRate;
+	public void setDeathRate(int dRate) {
+		System.out.println("+++++++++initial death rate"+deathRate);
+		deathRate += dRate;
+		System.out.println("+++++++++new death rate:"+deathRate);
 	}
 
 	private final int POPULATION_US = getPopulation();
@@ -66,12 +70,6 @@ public class State extends Button implements Runnable{
 		this.climate = climate;
 		this.population = population;
 		update();
-	}
-	
-	public void setTransmission(double up){
-		System.out.println("+++++++++initial transmission"+transmission);
-		transmission+=up;
-		System.out.println("+++++++++new transmission:"+transmission);
 	}
 	
 	public int getInfectedPop() {
